@@ -1,0 +1,34 @@
+---
+// import "../styles/global.css";
+import "../styles/spruce-css.scss";
+
+//import layout
+import Header from "../components/layouts/Header.astro";
+import Footer from "../components/layouts/Footer.astro";
+import LocalScript from "../scripts/LocalScript.astro";
+
+//props
+const {
+  title = "Astro Introduction",
+  description = "Simple website builder frameworks",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+
+    <!-- scripts -->
+    <LocalScript />
+  </body>
+</html>
