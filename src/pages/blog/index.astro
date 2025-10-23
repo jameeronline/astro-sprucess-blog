@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+
+//components
+import PostList from "../../components/blocks/PostList.astro";
+
+  const posts = [
+    {
+      title: "8 Helpful Sass Mixins and Functions",
+      url: "#",
+      thumbnail: "/img/blog/8-helpful-sass-mixins-and-functions.png",
+      thumbnailAlt: "8 Helpful Sass Mixins and Functions",
+      date: "2023-06-29T00:00:00.000Z",
+      tags: ["sass"],
+      author: {
+        name: "Adam Laki",
+        url: "https://adamlaki.com",
+        avatar: "https://secure.gravatar.com/avatar/fd9479a898c593601efd2fe758a86dba?s=96&d=mm&r=g"
+      }
+    },
+    {
+      title: "Cracking the Theme Switcher and Dark Mode",
+      url: "#",
+      thumbnail: "/img/blog/cracking-the-theme-switcher-and-dark-mode.png",
+      thumbnailAlt: "Cracking the Theme Switcher and Dark Mode",
+      date: "2023-05-30T00:00:00.000Z",
+      tags: ["css","ui"],
+      author: {
+        name: "Adam Laki",
+        url: "https://adamlaki.com",
+        avatar: "https://secure.gravatar.com/avatar/fd9479a898c593601efd2fe758a86dba?s=96&d=mm&r=g"
+      }
+    },
+    {
+      title: "4 Areas Where Modern CSS Solves a Lot",
+      url: "#",
+      thumbnail: "/img/blog/4-areas-where-modern-css-solves-a-lot.png",
+      thumbnailAlt: "4 Areas Where Modern CSS Solves a Lot",
+      date: "2023-04-15T00:00:00.000Z",
+      tags: ["css"],
+      author: {
+        name: "Adam Laki",
+        url: "https://adamlaki.com",
+        avatar: "https://secure.gravatar.com/avatar/fd9479a898c593601efd2fe758a86dba?s=96&d=mm&r=g"
+      }
+    },
+    {
+      title: "Internationalization (right-to-left support) with CSS Frameworks",
+      url: "#",
+      thumbnail: "/img/blog/internationalization-right-to-left-support-with-css-frameworks.png",
+      thumbnailAlt: "Internationalization (right-to-left support) with CSS Frameworks",
+      date: "2023-02-05T00:00:00.000Z",
+      tags: ["sass"],
+      author: {
+        name: "Adam Laki",
+        url: "https://adamlaki.com",
+        avatar: "https://secure.gravatar.com/avatar/fd9479a898c593601efd2fe758a86dba?s=96&d=mm&r=g"
+      }
+    },
+    {
+      title: "How to Reduce Spruce CSS Size",
+      url: "#",
+      thumbnail: "/img/blog/how-to-03.png",
+      thumbnailAlt: "How to Reduce Spruce CSS Size",
+      date: "2023-01-04T00:00:00.000Z",
+      tags: ["how-to"],
+      author: {
+        name: "Adam Laki",
+        url: "https://adamlaki.com",
+        avatar: "https://secure.gravatar.com/avatar/fd9479a898c593601efd2fe758a86dba?s=96&d=mm&r=g"
+      }
+    },
+    {
+      title: "About Modern Sass",
+      url: "#",
+      thumbnail: "/img/blog/about-modern-sass.png",
+      thumbnailAlt: "About Modern Sass",
+      date: "2022-12-03T00:00:00.000Z",
+      tags: ["sass"],
+      author: {
+        name: "Adam Laki",
+        url: "https://adamlaki.com",
+        avatar: "https://secure.gravatar.com/avatar/fd9479a898c593601efd2fe758a86dba?s=96&d=mm&r=g"
+      }
+    }
+  ];
+---
+
+<BaseLayout title="Blog" description="Latest blogs">
+  <PostList posts={posts} />
+</BaseLayout>

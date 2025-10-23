@@ -1,0 +1,17 @@
+---
+const {author} = Astro.props;
+
+//destrucre props
+const {avatar, name, url} = author;
+---
+
+<a class="post-author" href={url}>
+  <img
+    class="post-author__avatar"
+    src={avatar}
+    alt=""
+    width="38"
+    height="38"
+  />
+  <span class="post-author__name">by {name}</span>
+</a>

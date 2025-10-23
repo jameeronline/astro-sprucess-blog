@@ -1,0 +1,16 @@
+---
+const {posts} = Astro.props;
+
+//components 
+import PostCard from "./PostCard.astro";
+---
+
+<div class="l-post-list">
+  <div class="container">
+    <div class="l-post-list__inner">
+      {
+        posts.map(post => <PostCard post={post} />)
+      }
+    </div>
+  </div>
+</div>
