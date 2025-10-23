@@ -10,6 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.1.2"
+    "astro": "^4.1.2",
+    "sass": "1.93.2",
+    "sprucecss": "2.3.4"
   }
 }
