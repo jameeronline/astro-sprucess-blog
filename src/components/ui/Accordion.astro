@@ -1,0 +1,18 @@
+---
+const { accordionInfo } = Astro.props;
+---
+
+<div class="accordion-list">
+  {
+    accordionInfo.map((item) => {
+      <div class="accordion-card">
+        <h3 class="accordion-card__title">{item.label}</h3>
+        <div class="accordion-card__content" aria-hidden="true">
+          <div>
+            <p>{item.description}</p>
+          </div>
+        </div>
+      </div>;
+    })
+  }
+</div>
