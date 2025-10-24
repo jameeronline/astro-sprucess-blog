@@ -1,6 +1,16 @@
 ---
 //fonts
 import '@fontsource-variable/inter';
+import '@fontsource/poppins/100.css';
+import '@fontsource/poppins/200.css';
+import '@fontsource/poppins/300.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/800.css';
+import '@fontsource/poppins/900.css';
+import '@fontsource-variable/ibm-plex-sans';
 
 // import "../styles/global.css";
 import "@styles/spruce-css.scss";
@@ -9,8 +19,11 @@ import "@styles/spruce-css.scss";
 //import layout
 import Header from "@components/layouts/Header.astro";
 import Footer from "@components/layouts/Footer.astro";
-import LocalScript from "@scripts/LocalScript.astro";
 import Container from "@components/ui/Container.astro";
+
+//scripts
+import LocalScript from "@scripts/LocalScript.astro";
+import ScrollAnimate from "@scripts/ScrollAnimate.astro";
 
 //props
 const {
@@ -19,7 +32,7 @@ const {
 } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-animation scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -40,5 +53,6 @@ const {
 
     <!-- scripts -->
     <LocalScript />
+    <ScrollAnimate />
   </body>
 </html>

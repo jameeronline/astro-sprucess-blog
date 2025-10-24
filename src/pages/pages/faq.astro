@@ -1,0 +1,14 @@
+---
+//import layout
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHeading from "@components/blocks/PageHeading.astro";
+import Accordion from "@components/ui/Accordion.astro";
+
+//gallery import
+import { faqs } from "@utils/faq";
+---
+
+<BaseLayout>
+  <PageHeading title="Frequently Asked Questions" />
+  <Accordion items={faqs} />
+</BaseLayout>

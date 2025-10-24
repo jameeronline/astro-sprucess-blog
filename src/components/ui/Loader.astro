@@ -1,0 +1,18 @@
+---
+interface Props {
+  type?: 'default' | 'circle-bars';
+}
+const { type = 'default' } = Astro.props;
+---
+
+{ type === 'default' ? (
+    <span class="preloader--bars">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+) : null }
+
+{ type === 'circle-bars' ? (
+    <span class="preloader--circle"></span>
+) : null }

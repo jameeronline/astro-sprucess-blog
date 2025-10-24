@@ -1,7 +1,9 @@
+@use "sass:color";
 @use 'sprucecss/scss/spruce' as *;
 
 .site-footer {
   padding-block: spacer-clamp('xl', 'xxl');
+  background-color: color.change($color-primary, $lightness: 98%);
 
   &__top {
     @include layout-grid('l', 14rem);

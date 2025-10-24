@@ -6,11 +6,21 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import CTA from "@components/blocks/CTA.astro";
 import NumberCard from "@components/blocks/NumberCard.astro";
 import ServicesCard from "@/components/blocks/ServicesCard.astro";
+
+import Alerts from "@/components/ui/Alerts.astro";
+import Loader from "@/components/ui/Loader.astro";
 ---
 
 <BaseLayout>
-  <ServicesCard />
-  <NumberCard />
+  <Loader />
+  <section class="section">
+  <h2 class="section-title">Our Services</h2>
+    <ServicesCard />
+  </section>
+  <section class="section" data-scroll-animate>
+    <h2 class="section-title" data-scroll-animate>Our Achievements</h2>
+    <NumberCard />
+  </section>
   <CTA />
 </BaseLayout>
 </BaseLayout>

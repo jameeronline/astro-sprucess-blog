@@ -12,7 +12,9 @@
         )
     ),
     $typography: (
+        //'font-family': #{'IBM Plex Sans Variable', sans-serif},
         'font-family-base': #{'Inter Variable', sans-serif},
+        'font-family-heading': #{'Poppins', sans-serif},
     )
 );
 
@@ -107,3 +109,4 @@ $dark-colors: (
 
 // Import all components at once
 @import "./components";
+@import "./utils";

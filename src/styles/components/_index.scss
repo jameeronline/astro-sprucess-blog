@@ -15,6 +15,10 @@
 @forward "post-content";
 // @forward "post-navigation";
 
+//ui
+@forward "alerts";
+@forward "loader";
+
 @forward "register-form";
 @forward "cta";
 @forward "timeline";
