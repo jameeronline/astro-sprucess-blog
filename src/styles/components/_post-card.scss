@@ -40,6 +40,12 @@
     line-height: 1;
   }
 
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: spacer('xs');
+  }
+
   &__title {
     font-size: font-size('h3');
 

@@ -1,0 +1,33 @@
+---
+const { images = [], isEven = false } = Astro.props;
+
+// Validate images prop
+if (!Array.isArray(images)) {
+  console.error('Gallery: images prop must be an array');
+}
+---
+
+<div 
+  class:list={[
+    'gallery',
+    { 'gallery--even': isEven },
+    { 'gallery--uneven': !isEven }
+  ]}
+>
+  {images && images.length > 0 ? (
+    images.map((image, index) => (
+      <figure class="gallery-item">
+        <a href={image.image} target="_blank" rel="noopener noreferrer">
+          <img 
+            src={image.image} 
+            alt={image.alt || `Gallery image ${index + 1}`} 
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      </figure>
+    ))
+  ) : (
+    <p class="gallery-empty">No images to display</p>
+  )}
+</div>

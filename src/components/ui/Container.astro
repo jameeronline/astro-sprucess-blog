@@ -1,0 +1,6 @@
+---
+const { isNarrow = false } = Astro.props;
+---
+<div class="container" class:list={[ isNarrow ? 'container--narrow' : '' ]}>
+    <slot />
+</div>

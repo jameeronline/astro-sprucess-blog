@@ -1,10 +1,14 @@
 ---
 //import layout
-import BaseLayout from "../layout/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Gallery from "@components/blocks/Gallery.astro";
+import PageHeading from "@components/blocks/PageHeading.astro";
+
+//gallery import
+import { gallery } from "@utils/gallery";
 ---
 
 <BaseLayout>
-  <h1>Products</h1>
-  <button type="button" class="btn btn--primary">Primary</button>
-  <a href="https://conedevelopment.com" class="btn btn--secondary">Secondary</a>
+  <PageHeading title="Products" />
+  <Gallery images={gallery} isEven={true} />
 </BaseLayout>

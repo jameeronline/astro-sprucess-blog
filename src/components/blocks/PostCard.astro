@@ -1,8 +1,11 @@
 ---
 const {post} = Astro.props;
 
-//destrucre props
-const {title, thumbnail, thumbnailAlt, tags, author, lastUpdatedDate} = post;
+//utils 
+import { slugify } from "@utils/index.js";
+
+//props
+const {title, url, thumbnail, thumbnailAlt, tags, author, lastUpdatedDate} = post;
 
 //components
 import PostAuthor from "./PostAuthor.astro"
@@ -18,13 +21,13 @@ import PostAuthor from "./PostAuthor.astro"
     <div class="post-card__meta">
       <div class="post-card__tags">
         {
-          tags.map(tag => <a href="#">#{tag}</a>)
+          tags.map(tag => <a href={`/tag/${slugify(tag)}`}># {tag}</a>)
         }
       </div>
       <time datetime="2022-12-03T00:00:00.000Z">{lastUpdatedDate}</time>
     </div>
     <h2 class="post-card__title">
-      <a class="post-card__link" href="#">{title}</a>
+      <a class="post-card__link" href={`/blog/${url}`}>{title}</a>
     </h2>
     <PostAuthor author={author} />
   </div>

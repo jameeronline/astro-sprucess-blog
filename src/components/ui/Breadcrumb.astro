@@ -1,0 +1,13 @@
+---
+const { items } = Astro.props;
+---
+
+<ol class="breadcrumb-list">
+    {items.map((item, index) => (
+        <li key={item.href}>
+            <a href={item.href} aria-current={index === items.length - 1 ? 'page' : undefined}>
+                {item.name}
+            </a>
+        </li>
+    ))}
+</ol>

@@ -1,0 +1,14 @@
+---
+//components
+import Container from '@components/ui/Container.astro';
+
+const { title} = Astro.props;
+---
+
+<div class="post-heading post-heading--centered">
+    <Container>
+        <div class="post-heading__inner">
+            <h1 class="post-heading__title">{title}</h1>
+        </div>
+    </Container>
+</div>

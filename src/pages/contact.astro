@@ -1,10 +1,11 @@
 ---
 //import layout
-import BaseLayout from "../layout/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHeading from "@components/blocks/PageHeading.astro";
 ---
 
 <BaseLayout>
-  <h1>Contact</h1>
+  <PageHeading title="Contact" />
   <button type="button" class="btn btn--primary">Primary</button>
   <a href="https://conedevelopment.com" class="btn btn--secondary">Secondary</a>
 </BaseLayout>

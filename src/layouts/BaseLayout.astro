@@ -1,11 +1,16 @@
 ---
+//fonts
+import '@fontsource-variable/inter';
+
 // import "../styles/global.css";
-import "../styles/spruce-css.scss";
+import "@styles/spruce-css.scss";
+
 
 //import layout
-import Header from "../components/layouts/Header.astro";
-import Footer from "../components/layouts/Footer.astro";
-import LocalScript from "../scripts/LocalScript.astro";
+import Header from "@components/layouts/Header.astro";
+import Footer from "@components/layouts/Footer.astro";
+import LocalScript from "@scripts/LocalScript.astro";
+import Container from "@components/ui/Container.astro";
 
 //props
 const {
@@ -24,8 +29,13 @@ const {
     <meta name="description" content={description} />
   </head>
   <body>
+    <a href="#main-content" class="btn btn--primary skip-link">Skip to Content</a>
     <Header />
-    <slot />
+    <main id="main-content">
+      <Container>
+        <slot />
+      </Container>
+    </main>
     <Footer />
 
     <!-- scripts -->

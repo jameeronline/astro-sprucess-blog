@@ -10,7 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.1.2",
+    "@astrojs/alpinejs": "^0.4.9",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@types/alpinejs": "^3.13.11",
+    "alpinejs": "^3.15.0",
+    "astro": "^5.15.1",
     "sass": "1.93.2",
     "sprucecss": "2.3.4"
   }

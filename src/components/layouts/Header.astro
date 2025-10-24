@@ -1,5 +1,9 @@
 ---
-
+//components
+import Container from "@/components/ui/Container.astro";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher.astro";
+import LangSwitcher from "@components/blocks/LangSwitcher.astro";
+import SiteNavigation from "@/components/blocks/SiteNavigation.astro";
 ---
 
 <header class="site-header">
@@ -9,55 +13,21 @@
         <a class="site-header__logo" href="/">
           <img src="/img/cone-logo.svg" alt="Cone" width="48" height="48" />
         </a>
-        <nav class="site-navigation site-header__navigation" aria-label="Site">
-          <button
-            class="btn btn--primary btn--icon site-navigation__btn"
-            data-action="navigation-toggle"
-            aria-controls="primary-menu"
-            aria-expanded="false"
-            aria-label="Main"
-          >
-            <svg
-              class="btn__icon"
-              aria-hidden="true"
-              focusable="false"
-              role="img"
-              height="24"
-              style="fill-rule:evenodd;clip-rule:evenodd;fill:currentColor;overflow:visible;"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M24,19.6c0,-0.331 -0.269,-0.6 -0.6,-0.6l-20.8,0c-0.331,0 -0.6,0.269 -0.6,0.6l0,2.8c0,0.331 0.269,0.6 0.6,0.6l20.8,-0c0.331,-0 0.6,-0.269 0.6,-0.6l0,-2.8Zm0,-9c0,-0.331 -0.269,-0.6 -0.6,-0.6l-22.8,-0c-0.331,-0 -0.6,0.269 -0.6,0.6l0,2.8c0,0.331 0.269,0.6 0.6,0.6l22.8,-0c0.331,-0 0.6,-0.269 0.6,-0.6l0,-2.8Zm0,-9c0,-0.331 -0.269,-0.6 -0.6,-0.6l-15.8,-0c-0.331,-0 -0.6,0.269 -0.6,0.6l0,2.8c0,0.331 0.269,0.6 0.6,0.6l15.8,-0c0.331,-0 0.6,-0.269 0.6,-0.6l0,-2.8Z"
-              ></path>
-            </svg>
-          </button>
-          <ul id="primary-menu" class="navigation-menu">
-            <li>
-              <a href="/services">Services</a>
-            </li>
-            <li>
-              <a href="/products">Products</a>
-            </li>
-            <li>
-              <a href="/blog">Blog</a>
-            </li>
-            <li>
-              <a href="/about">About</a>
-            </li>
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
-          </ul>
-        </nav>
+        <SiteNavigation links={[
+          { href: '/services', label: 'Services' },
+          { href: '/products', label: 'Products' },
+          { href: '/blog', label: 'Blog' },
+          { href: '/about', label: 'About' },
+          { href: '/contact', label: 'Contact' },
+        ]} />
       </div>
       <div class="site-header__actions">
-        <a class="site-header__email" href="mailto:hello@conedevelopment.com"
-          >hello@conedevelopment.com</a
+        <a class="site-header__email" href="mailto:contact@uidev.com"
+          >contact@uidev.com</a
         >
-        <a class="btn btn--primary" href="#">
+        <ThemeSwitcher />
+        <LangSwitcher />
+        <a class="btn btn--primary" href="auth/register">
           <svg
             class="btn__icon"
             aria-hidden="true"

@@ -1,0 +1,21 @@
+@use 'sprucecss/scss/spruce' as *;
+
+.number-card {
+  border-bottom: 1px solid color('border');
+  padding-block: spacer('l');
+  @include layout-stack('xs');
+
+  &__data {
+    color: color('primary');
+    font-family: config('font-family-heading', $typography);
+    font-size: responsive-font-size(5rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__wrapper {
+    --inline-size: 10rem;
+    @include layout-flex('xs');
+    text-align: center;
+  }
+}

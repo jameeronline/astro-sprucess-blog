@@ -1,0 +1,25 @@
+---
+//components
+import Container from '@components/ui/Container.astro';
+import Breadcrumb from '@components/ui/Breadcrumb.astro';
+import PostAuthor from '@components/blocks/PostAuthor.astro';
+
+const { title, breadcrumbs, author } = Astro.props;
+---
+
+<div class="post-heading">
+    <Container>
+        <div class="post-heading__inner">
+            <h1 class="post-heading__title">{title}</h1>
+            <Breadcrumb items={breadcrumbs} />
+            <div class="post-heading__meta">
+                <PostAuthor author={author} />
+                <span>Posted in <a href="#">Business</a>, <a href="#">Notes</a></span>
+                <span>
+                    <span class="sr-only">Posted on</span>
+                    <time datetime="2022-03-17T11:47:25+01:00">Mar 17, 2022</time>
+                </span>
+            </div>
+        </div>
+    </Container>
+</div>
