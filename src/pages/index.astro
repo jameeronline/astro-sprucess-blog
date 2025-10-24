@@ -5,13 +5,14 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 //components
 import CTA from "@components/blocks/CTA.astro";
 import NumberCard from "@components/blocks/NumberCard.astro";
+import ServicesCard from "@/components/blocks/ServicesCard.astro";
 ---
 
 <BaseLayout>
-  <button type="button" class="btn btn--primary">Primary</button>
-  <a href="https://conedevelopment.com" class="btn btn--secondary">Secondary</a>
+  <ServicesCard />
   <NumberCard />
   <CTA />
+</BaseLayout>
 </BaseLayout>
 
 <script>
