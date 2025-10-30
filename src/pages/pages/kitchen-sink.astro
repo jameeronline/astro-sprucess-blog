@@ -1,0 +1,149 @@
+---
+//import layout
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHeading from "@components/blocks/PageHeading.astro";
+import Accordion from "@components/ui/Accordion.astro";
+
+//component import
+import Alerts from "@/components/ui/Alerts.astro";
+---
+
+<BaseLayout>
+  <PageHeading title="Kitchen Sink" />
+
+  <div class="docs-grid">
+    <div class="docs-grid__column">
+      <ul class="links-group">
+        <li class="links-group__item"><a href="#alerts">Alerts</a></li>
+        <li class="links-group__item"><a href="#buttons">Buttons</a></li>
+        <li class="links-group__item"><a href="#typography">Typography</a></li>
+        <li class="links-group__item"><a href="#forms">Forms</a></li>
+      </ul>
+    </div>
+
+    <div class="docs-grid__details">
+      <div class="layout-stack">
+        <h2 id="alerts">Alerts</h2>
+        <Alerts
+          type="danger"
+          title="Danger!"
+          message="This is a danger alert message."
+          closeBtn={true}
+        />
+        <Alerts
+          type="success"
+          title="Success!"
+          message="This is a success alert message."
+          closeBtn={true}
+        />
+        <Alerts
+          type="warning"
+          title="Warning!"
+          message="This is a warning alert message."
+          closeBtn={true}
+        />
+        <Alerts
+          type="info"
+          title="Info!"
+          message="This is an info alert message."
+          closeBtn={true}
+        />
+      </div>
+
+      <div class="layout-stack">
+        <h2 id="buttons">Buttons</h2>
+
+        <h4>Variants</h4>
+        <button class="btn btn--primary">Primary Large</button>
+        <a href="#" class="btn btn--secondary">Secondary Large</a>
+        <a href="#" class="btn btn--danger">Danger Button</a>
+        <a href="#" class="btn btn--success">Success Button</a>
+
+        <h4>Outline</h4>
+        <button type="button" class="btn btn--outline-primary"
+          >Primary Anchor</button
+        >
+        <a href="#" class="btn btn--outline-secondary">Secondary Small</a>
+
+        <button type="button" class="btn btn--primary btn--primary-shadow"
+          >Primary</button
+        >
+        <a
+          href="https://conedevelopment.com"
+          class="btn btn--secondary btn--secondary-shadow">Secondary</a
+        >
+
+        <button type="button" class="btn btn--primary btn--sm">Small</button>
+        <button type="button" class="btn btn--primary">Regular</button>
+        <button type="button" class="btn btn--primary btn--lg">Large</button>
+
+        <button type="button" class="btn btn--secondary" disabled
+          >Disabled button</button
+        >
+        <a class="btn btn--secondary btn--disabled" aria-disabled="true"
+          >Disabled button</a
+        >
+
+        <button type="button" class="btn btn--primary btn--block"
+          >Block button</button
+        >
+
+        <button type="button" class="btn btn--primary">
+          <svg
+            class="btn__icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            ><path fill="none" d="M0 0h24v24H0z"></path><path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+            ></path></svg
+          >
+          Read more
+        </button>
+        <button type="button" class="btn btn--secondary">
+          Read more
+          <svg
+            class="btn__icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            ><path fill="none" d="M0 0h24v24H0z"></path><path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+            ></path></svg
+          >
+        </button>
+
+        <button class="btn btn--secondary btn--icon" aria-label="Copy Text">
+          <svg
+            class="btn__icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            ><path fill="none" d="M0 0h24v24H0z"></path><path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+            ></path></svg
+          >
+          Read more
+        </button>
+      </div>
+      <h2 id="typography">Typography</h2>
+      <h1>h1: The quick brown fox jumps over the lazy dog</h1>
+      <h2>h2: The quick brown fox jumps over the lazy dog</h2>
+      <h3>h3: The quick brown fox jumps over the lazy dog</h3>
+      <h4>h4: The quick brown fox jumps over the lazy dog</h4>
+      <h5>h5: The quick brown fox jumps over the lazy dog</h5>
+      <h6>h6: The quick brown fox jumps over the lazy dog</h6>
+
+      <p>
+        Mauris sit amet ipsum eget orci congue egestas a eu ipsum. Mauris
+        porttitor tincidunt ligula at finibus. Vestibulum feugiat semper
+        aliquet.
+      </p>
+      <p class="lead">
+        Mauris sit amet ipsum eget orci congue egestas a eu ipsum. Mauris
+        porttitor tincidunt ligula at finibus. Vestibulum feugiat semper
+        aliquet.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

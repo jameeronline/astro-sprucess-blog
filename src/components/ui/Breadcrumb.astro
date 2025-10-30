@@ -1,4 +1,13 @@
 ---
+interface BreadcrumbItem {
+    name: string;
+    href: string;
+}
+
+interface Props {
+    items: BreadcrumbItem[];
+}
+
 const { items } = Astro.props;
 ---
 

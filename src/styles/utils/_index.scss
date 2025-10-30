@@ -36,3 +36,22 @@
         &:nth-child(12) { transition-delay: 875ms; }
     }
 }
+
+.layout-stack{
+  @include layout-stack('m');
+  margin-bottom: spacer('xl');
+}
+
+.links-group{
+  @include layout-stack('xs');
+  list-style: none;
+}
+
+.docs-grid{
+  @include layout-sidebar('m');
+}
+
+.docs-grid__column{
+  position: sticky;
+  top: spacer('l');
+}

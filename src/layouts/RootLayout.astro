@@ -1,0 +1,55 @@
+---
+//fonts
+import '@fontsource-variable/inter';
+import '@fontsource/poppins/100.css';
+import '@fontsource/poppins/200.css';
+import '@fontsource/poppins/300.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/800.css';
+import '@fontsource/poppins/900.css';
+import '@fontsource-variable/ibm-plex-sans';
+
+// import "../styles/global.css";
+import "@styles/spruce-css.scss";
+
+
+//import layout
+import Header from "@components/layouts/Header.astro";
+import Footer from "@components/layouts/Footer.astro";
+import Container from "@components/ui/Container.astro";
+
+//scripts
+import LocalScript from "@scripts/LocalScript.astro";
+import ScrollAnimate from "@scripts/ScrollAnimate.astro";
+
+//props
+const {
+  title = "Astro Introduction",
+  description = "Simple website builder frameworks",
+} = Astro.props;
+---
+
+<html lang="en" class="scroll-animation scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <!-- Skip to content link -->
+    <a href="#main-content" class="btn btn--primary skip-link">Skip to Content</a>
+
+    <!-- page components -->
+    <slot />
+
+    <!-- scripts -->
+    <LocalScript />
+    <ScrollAnimate />
+  </body>
+</html>

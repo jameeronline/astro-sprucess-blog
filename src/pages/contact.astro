@@ -6,6 +6,190 @@ import PageHeading from "@components/blocks/PageHeading.astro";
 
 <BaseLayout>
   <PageHeading title="Contact" />
-  <button type="button" class="btn btn--primary">Primary</button>
-  <a href="https://conedevelopment.com" class="btn btn--secondary">Secondary</a>
+
+  <div class="contact-grid">
+      <form id="contactForm" method="POST" action="/api/contact" class="contact-form">
+        <div class="form-group">
+          <label class="form-label" for="name">Name</label>
+          <input
+            class="form-control form-control--lg"
+            id="name"
+            name="your-name"
+            type="text"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-control form-control--lg"
+            id="email"
+            name="your-email"
+            type="email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="subject">Subject</label>
+          <input
+            class="form-control form-control--lg"
+            id="subject"
+            name="your-subject"
+            type="text"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea
+            class="form-control form-control--lg"
+            id="message"
+            name="your-message"
+            required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block"
+          >Send Message</button
+        >
+        <p
+          id="formStatus"
+          style="margin-top:.5rem;font-size:.95rem;color:green;display:none;"
+        >
+          Message sent.
+        </p>
+      </form>
+
+    <div class="map-column">
+      <div id="map"></div>
+      <!-- <ul
+        id="locations"
+        class="locations-list"
+        aria-label="Office locations list"
+      >
+      </ul> -->
+    </div>
+  </div>
+
+  <style>
+
+
+  #map{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: ;
+  }
+  </style>
+
+  <script>
+    // Replace with your Google Maps API key
+    const API_KEY = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY;
+
+    const locations = [
+      {
+        title: "Head Office",
+        lat: 37.7749,
+        lng: -122.4194,
+        address: "San Francisco, CA",
+      },
+      {
+        title: "Europe Office",
+        lat: 51.5074,
+        lng: -0.1278,
+        address: "London, UK",
+      },
+      {
+        title: "Asia Office",
+        lat: 1.3521,
+        lng: 103.8198,
+        address: "Singapore",
+      },
+    ];
+
+    // Form submit handler (simple fetch to /api/contact)
+    const form = document.getElementById("contactForm");
+    const status = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          form.reset();
+          status.style.display = "block";
+          setTimeout(() => (status.style.display = "none"), 3500);
+        } else {
+          const txt = await res.text();
+          alert("Error: " + txt);
+        }
+      } catch (err) {
+        alert("Network error");
+      }
+    });
+
+    // Map initialization & markers
+    function initMap() {
+      const center = { lat: locations[0].lat, lng: locations[0].lng };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center,
+        zoom: 3,
+        mapTypeId: "roadmap",      // force roadmap (no satellite by default)
+        mapTypeControl: false,     // hide map type control (removes satellite/terrain selector)
+        streetViewControl: false,  // optional: hide Street View pegman
+        fullscreenControl: false,  // optional: hide fullscreen button
+      });
+
+      const infowindow = new google.maps.InfoWindow();
+      const markers = locations.map((loc) => {
+        const m = new google.maps.Marker({
+          position: { lat: loc.lat, lng: loc.lng },
+          map,
+          title: loc.title,
+        });
+        m.addListener("click", () => {
+          infowindow.setContent(
+            `<strong>${loc.title}</strong><div>${loc.address}</div>`
+          );
+          infowindow.open(map, m);
+        });
+        return m;
+      });
+
+      // Populate list and wire clicks to pan map
+      // const list = document.getElementById("locations");
+      // locations.forEach((loc, i) => {
+      //   const li = document.createElement("li");
+      //   li.innerHTML = `<strong>${loc.title}</strong><div style="font-size:.9rem;color:#555;">${loc.address}</div>`;
+      //   li.addEventListener("click", () => {
+      //     map.panTo({ lat: loc.lat, lng: loc.lng });
+      //     map.setZoom(10);
+      //     google.maps.event.trigger(markers[i], "click");
+      //   });
+      //   list.appendChild(li);
+      // });
+    }
+
+    // Load Google Maps script with callback
+    function loadGmaps() {
+      if (typeof google !== "undefined" && google.maps) {
+        initMap();
+        return;
+      }
+      window.initMap = initMap;
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    loadGmaps();
+  </script>
 </BaseLayout>

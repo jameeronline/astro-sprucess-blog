@@ -2,7 +2,28 @@
 
 //core framework
 @use 'sprucecss/scss/spruce' as * with (
+    $color-primary: hsl(209, 100%, 20%),
+    $color-secondary: hsl(46, 100%, 50%),
+    $color-success: hsl(145, 63%, 41%),
+    $color-danger: hsl(354, 70%, 54%),
     $colors: (
+    'alert': (
+        'danger': hsl(354, 70%, 54%),
+        'success': hsl(145, 63%, 41%),
+        'info': hsl(197, 100%, 40%),
+        'warning': hsl(39, 100%, 50%),
+    ),
+    'btn': (
+        'danger-background': hsl(354, 70%, 54%),
+        'danger-background-hover': hsl(354, 70%, 60%),
+        'danger-foreground': hsl(0deg 0% 100%),
+        'danger-shadow': hsl(354, 70%, 40%),
+
+        'success-background': hsl(145, 63%, 41%),
+        'success-background-hover': hsl(145, 63%, 46%),
+        'success-foreground': hsl(0deg 0% 100%),
+        'success-shadow': hsl(145, 63%, 28%),
+    ),
     'breadcrumb': (
         'separator': hsl(0deg 0% 80%),
     ),
@@ -109,4 +130,9 @@ $dark-colors: (
 
 // Import all components at once
 @import "./components";
+@import "./blocks";
 @import "./utils";
+
+
+// Import addons
+@import "./addons";

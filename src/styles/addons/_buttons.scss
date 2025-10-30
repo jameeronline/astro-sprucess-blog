@@ -1,0 +1,9 @@
+@use 'sprucecss/scss/spruce' as *;
+
+.btn--danger{
+    @include btn-variant('danger');
+}
+
+.btn--success{
+    @include btn-variant('success');
+}

@@ -1,0 +1,53 @@
+@use 'sprucecss/scss/spruce' as *;
+
+.contact-grid {
+  @include layout-grid('m', 20rem);
+}
+
+.contact-form {
+  $this: &;
+
+  border-radius: config('border-radius-lg', $display);
+  color: color('text');
+  background-color: color('stripe', 'table' );
+  display: flex;
+  flex-direction: column;
+  gap: spacer('m');
+  padding: spacer-clamp('m', 'l');
+
+  // &:hover {
+  //   @include set-css-variable((
+  //     --base-color-heading: hsl(0deg 0% 100%),
+  //     --base-color-link: hsl(0deg 0% 100%),
+  //     --base-color-link-hover: hsl(0deg 0% 100%),
+  //     --base-color-text: hsl(0deg 0% 100%),
+  //   ));
+  // }
+
+  > * {
+    margin-block: 0;
+  }
+
+  &__caption {
+    @include layout-stack('s');
+  }
+
+  &__title {
+    @include transition;
+    font-weight: 400;
+
+    a {
+      color: color('heading');
+      text-decoration: none;
+    }
+  }
+
+  &__link {
+    margin-block-start: auto;
+  }
+
+  &__wrapper {
+    --inline-size: 20rem;
+    @include layout-flex('m');
+  }
+}

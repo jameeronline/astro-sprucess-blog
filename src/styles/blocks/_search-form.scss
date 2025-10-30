@@ -1,0 +1,36 @@
+@use 'sprucecss/scss/spruce' as *;
+
+
+.search-form{
+    $this: &;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: spacer('xs');
+    max-width: 40rem;
+    margin-inline: auto;
+
+    .form-control{
+        padding-block: spacer('s');
+    }
+
+    &__actions{
+        display: flex;
+        gap: spacer('s');
+        align-items: center;
+    }
+}
+
+// Search links
+.search-link{
+    display: inline-flex;
+    text-decoration: none;
+    color: color('primary');
+    width: spacer('s');
+    height: spacer('s');
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
