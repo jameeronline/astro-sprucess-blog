@@ -15,7 +15,7 @@ Astro 5 + Spruce CSS marketing/blog site. The README is still the default Astro 
 
 ## Architecture
 
-- `src/layouts/RootLayout.astro` owns `<html>`, fonts, global styles, `LocalScript`, and `ScrollAnimate`. `BaseLayout.astro` adds header/footer/container; `AuthLayout.astro` is separate.
+- `src/layouts/RootLayout.astro` owns `<html>`, fonts, global styles, `LocalScript`, `ScrollAnimate`, and the Google Tag Manager snippet (`GTM-T6L353CP`). Third-party scripts use `is:inline`; `window.dataLayer` is declared in `src/env.d.ts`. `BaseLayout.astro` adds header/footer/container; `AuthLayout.astro` is separate.
 - Routes are file-based in `src/pages`; there are no API routes. Auth pages are static, and `ContactForm` POSTs to `/api/contact`, which does not exist.
 - Page metadata flows `page -> BaseLayout -> RootLayout`; both layouts accept optional `title`/`description`, and `RootLayout` supplies defaults.
 - Path aliases are in `tsconfig.json` (`@/*`, `@components/*`, `@layouts/*`, etc.). Note that `@components` points at `src/components`, so UI components live under `@components/ui/...`. Aliases such as `@hooks`, `@stores`, `@i18n`, and `@middleware` point to nonexistent folders.
