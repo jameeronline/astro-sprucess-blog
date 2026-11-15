@@ -1,0 +1,13 @@
+---
+//import type {CollectionEntry} from "astro/types";
+
+//components
+import PostList from "@components/blocks/PostList.astro";
+
+const { posts } = Astro.props;
+---
+
+<section class="section" data-scroll-animate>
+  <h2 class="section-title">Recent Posts</h2>
+  <PostList posts={posts} />
+</section>

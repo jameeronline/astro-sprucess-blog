@@ -1,0 +1,22 @@
+@use "sprucecss/scss/spruce" as *;
+
+.page-header {
+  text-align: center;
+  margin-block-end: spacer("xl");
+  margin-inline: auto;
+  max-width: 42rem;
+
+  &__title {
+    font-family: config("font-family-heading", $typography);
+    font-size: responsive-font-size(5rem);
+    font-weight: 700;
+    margin-block: spacer("xs");
+  }
+
+  &__desc {
+    font-family: config("font-family-base", $typography);
+    font-size: responsive-font-size(1.125rem);
+    color: color("text");
+    margin-block: spacer("s");
+  }
+}

@@ -2,6 +2,7 @@
 
 .post-heading {
   text-align: center;
+  padding-block-end: spacer-clamp('m', 'xl');
 
   &__inner {
     display: grid;

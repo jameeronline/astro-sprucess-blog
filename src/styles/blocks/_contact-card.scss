@@ -1,0 +1,76 @@
+@use "sprucecss/scss/spruce" as *;
+
+.contact-cards {
+  @include layout-stack("m");
+}
+
+.visit-card {
+  display: flex;
+  gap: spacer("m");
+  padding: spacer("m");
+  background-color: color("group-label-background", "form");
+  border: 1px solid color("border");
+  border-radius: 1rem;
+
+  &__icon-wrapper {
+    flex-shrink: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: color("code-background");
+    border-radius: 1rem;
+  }
+
+  &__icon {
+    color: color("primary");
+  }
+
+  // Main content stack
+  &__content {
+    @include layout-stack("l");
+    flex: 1;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: font-size("h4");
+    font-family: config("font-family-base", $typography);
+    font-weight: config("font-weight-heading", $typography);
+    line-height: config("line-height-heading", $typography);
+  }
+
+  &__text {
+    margin: 0;
+    color: color("text");
+  }
+
+  &__description {
+    margin: 0;
+    color: color("text");
+  }
+
+  &__info {
+    margin-top: spacer("xs");
+    color: color("primary");
+    font-style: normal;
+    font-weight: config("font-weight-heading", $typography);
+    line-height: 1.45;
+  }
+
+  // Optional: subtle hover / interactive state (Spruce often adds these)
+  @media (hover: hover) {
+    &:hover,
+    &:focus-within {
+      border-color: color("primary");
+      box-shadow: shadow("xs");
+      @include transition;
+    }
+  }
+
+  //   @include breakpoint("md") {
+  //     padding: spacer-clamp("l", "xl");
+  //     gap: spacer("l");
+  //   }
+}

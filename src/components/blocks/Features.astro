@@ -1,79 +1,88 @@
 ---
+//types
+import type { FeatureItem } from "@/types/ui-types.ts";
 
+//astro image
+import { Image } from "astro:assets";
+
+//images
+import featureImg1 from "@/assets/why-you-should-choose-eleventy-as-your-static-site-generator.png";
+import featureImg2 from "@/assets/the-different-types-of-css-frameworks.png";
+import featureImg3 from "@/assets/8-helpful-sass-mixins-and-functions.png";
+import featureImg4 from "@/assets/why-use-sass.png";
+
+//icon
+import { ArrowRight } from "@lucide/astro";
+
+//features data
+const features: FeatureItem[] = [
+  {
+    img: featureImg1,
+    subtitle: "Two driven jocks help",
+    title: "Better than water",
+    description:
+      "The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs.",
+    href: "#",
+    btn: "Learn more",
+    class: "feature--start",
+  },
+  {
+    img: featureImg2,
+    subtitle: "A very bad quack might",
+    title: "Fresh as always",
+    description:
+      'A wizard’s job is to vex chumps quickly in fog. Watch "Jeopardy!", Alex Trebek\'s fun TV quiz game. Woven silk pyjamas exchanged for blue quartz. Brawny gods just.',
+    href: "#",
+    btn: "Learn more",
+    class: "feature--end",
+  },
+  {
+    img: featureImg3,
+    subtitle: "Quick brown foxes",
+    title: "Speed and Agility",
+    description:
+      "Quick brown foxes leap over lazy dogs with ease. Their agility and speed make them stand out in any crowd.",
+    href: "#",
+    btn: "Discover",
+    class: "feature--start",
+  },
+  {
+    img: featureImg4,
+    subtitle: "Wizards at work",
+    title: "Magic Touch",
+    description:
+      "Wizards conjure solutions out of thin air, making complex problems disappear with a wave of their wand.",
+    href: "#",
+    btn: "Explore",
+    class: "feature--end",
+  }
+];
 ---
+
 <div class="l-feature">
-    <div class="l-feature__inner" data-scroll-animate>
-      <div class="feature feature--start">
-        <img
-          class="feature__thumbnail"
-          src="/img/blog/why-you-should-choose-eleventy-as-your-static-site-generator.png"
-          alt=""
-        />
-        <div class="feature__caption">
-          <p class="feature__subtitle">Two driven jocks help</p>
-          <h2 class="feature__title">Better than water</h2>
-          <p>
-            The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax
-            quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick
-            quartz, vex nymphs.
-          </p>
-          <a class="btn btn--primary feature__btn" href="#">
-            Learn more
-            <svg
-              class="btn__icon"
-              aria-hidden="true"
-              fill="none"
-              focusable="false"
-              height="24"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
+  <div class="l-feature__inner" data-scroll-animate>
+    {
+      features.map((feature) => (
+        <div class={`feature ${feature.class}`} data-scroll-animate>
+          <Image
+            src={feature.img}
+            alt={feature.title}
+            class="feature__thumbnail"
+            quality={90}
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="feature__caption">
+            <p class="feature__subtitle">{feature.subtitle}</p>
+            <h2 class="feature__title">{feature.title}</h2>
+            <p>{feature.description}</p>
+            <a class="btn btn--primary feature__btn" href={feature.href}>
+              {feature.btn}
+              <ArrowRight class="btn__icon" />
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="feature feature--end"  data-scroll-animate>
-        <img
-          class="feature__thumbnail"
-          src="/img/blog/the-different-types-of-css-frameworks.png"
-          alt=""
-        />
-        <div class="feature__caption">
-          <p class="feature__subtitle">A very bad quack might</p>
-          <h2 class="feature__title">Fresh as always</h2>
-          <p>
-            A wizard’s job is to vex chumps quickly in fog. Watch "Jeopardy!",
-            Alex Trebek's fun TV quiz game. Woven silk pyjamas exchanged for
-            blue quartz. Brawny gods just.
-          </p>
-          <a class="btn btn--primary feature__btn" href="#">
-            Learn more
-            <svg
-              class="btn__icon"
-              aria-hidden="true"
-              fill="none"
-              focusable="false"
-              height="24"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+      ))
+    }
+  </div>
 </div>

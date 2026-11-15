@@ -10,8 +10,8 @@ const { title, breadcrumbs, author } = Astro.props;
 <div class="post-heading">
     <Container>
         <div class="post-heading__inner">
-            <h1 class="post-heading__title">{title}</h1>
             <Breadcrumb items={breadcrumbs} />
+            <h1 class="post-heading__title">{title}</h1>
             <div class="post-heading__meta">
                 <PostAuthor author={author} />
                 <span>Posted in <a href="#">Business</a>, <a href="#">Notes</a></span>

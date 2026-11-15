@@ -1,0 +1,53 @@
+---
+//images
+import stripeLogo from "@/assets/stripe-logo.svg";
+import paypalLogo from "@/assets/paypal-logo.svg";
+
+//types
+import type { PaymentOption } from "@/types/ui-types.ts";
+
+//payment options
+const paymentOptions: PaymentOption[] = [
+  {
+    id: "stripe",
+    name: "Stripe",
+    logo: stripeLogo,
+    description: "You will be redirect to Stripe to complete the payment.",
+  },
+  {
+    id: "paypal",
+    name: "PayPal",
+    logo: paypalLogo,
+    description: "You will be redirect to PayPal to complete the payment.",
+  },
+];
+---
+
+<div class="payment-card-container">
+  {
+    paymentOptions.map((option, idx) => (
+      <div class="payment-card">
+        <label class="form-check">
+          <input
+            class="form-check__control"
+            type="radio"
+            name="payment-type"
+            value={option.id}
+            aria-label={option.name}
+            checked={idx === 0 ? true : undefined}
+          />
+        </label>
+        <div class="payment-card__caption">
+          <img
+            class="payment-card__logo"
+            src={option.logo.src}
+            alt={option.name}
+            height={option.id === "stripe" ? "67" : "104"}
+            width="28"
+          />
+          <p class="payment-card__description">{option.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

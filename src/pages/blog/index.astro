@@ -1,15 +1,19 @@
 ---
+//astro collections
+import { getCollection, getEntry } from 'astro:content';
+
+//layout
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 //components
 import PageHeading from "@components/blocks/PageHeading.astro";
 import PostList from "@components/blocks/PostList.astro";
 
-//posts data
-import { posts } from "@utils/posts.js";
+//fetch posts collection
+const postsCollection = await getCollection("posts");
 ---
 
 <BaseLayout title="Blog" description="Latest blogs">
   <PageHeading title="Latest Articles" />
-  <PostList posts={posts} />
+  <PostList posts={postsCollection} />
 </BaseLayout>

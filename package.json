@@ -13,11 +13,15 @@
     "@astrojs/alpinejs": "^0.4.9",
     "@fontsource-variable/ibm-plex-sans": "^5.2.8",
     "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/outfit": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
+    "@lucide/astro": "^0.563.0",
+    "@swup/astro": "^1.7.0",
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.15.0",
     "astro": "^5.15.1",
     "sass": "1.93.2",
-    "sprucecss": "2.3.4"
+    "sprucecss": "2.3.4",
+    "swup": "^4.8.2"
   }
 }

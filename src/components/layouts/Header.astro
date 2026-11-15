@@ -1,9 +1,15 @@
 ---
+//data
+import { siteNavigation, siteMetadata } from "@/data/site-data.ts";
+
 //components
 import Container from "@/components/ui/Container.astro";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher.astro";
 import LangSwitcher from "@components/blocks/LangSwitcher.astro";
 import SiteNavigation from "@/components/blocks/SiteNavigation.astro";
+
+//icons
+import { Search } from "@lucide/astro";
 ---
 
 <header class="site-header">
@@ -13,22 +19,17 @@ import SiteNavigation from "@/components/blocks/SiteNavigation.astro";
         <a class="site-header__logo" href="/">
           <img src="/img/cone-logo.svg" alt="Cone" width="48" height="48" />
         </a>
-        <SiteNavigation links={[
-          { href: '/services', label: 'Services' },
-          { href: '/products', label: 'Products' },
-          { href: '/blog', label: 'Blog' },
-          { href: '/about', label: 'About' },
-          { href: '/contact', label: 'Contact' },
-        ]} />
+        <SiteNavigation links={siteNavigation} />
       </div>
       <div class="site-header__actions">
-        <a class="site-header__email" href="mailto:contact@uidev.com"
+        <!-- <a class="site-header__email" href="mailto:contact@uidev.com"
           >contact@uidev.com</a
-        >
+        > -->
         <ThemeSwitcher />
-        <LangSwitcher />
+        <!-- <LangSwitcher /> -->
         <a class="search-link" href="/search">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="currentColor"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
+          <Search aria-hidden="true" />
+          <span class="sr-only">Search</span>
         </a>
         <a class="btn btn--primary" href="auth/register">
           <svg
@@ -50,6 +51,32 @@ import SiteNavigation from "@/components/blocks/SiteNavigation.astro";
           </svg>
           Log in
         </a>
+
+        <!-- Mobile nav toggle -->
+        <button
+          class="btn btn--primary btn--icon site-navigation__btn"
+          data-action="navigation-toggle"
+          aria-controls="primary-menu"
+          aria-expanded="false"
+          aria-label="Main"
+        >
+          <svg
+            class="btn__icon"
+            aria-hidden="true"
+            focusable="false"
+            role="img"
+            height="24"
+            style="fill-rule:evenodd;clip-rule:evenodd;fill:currentColor;overflow:visible;"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M24,19.6c0,-0.331 -0.269,-0.6 -0.6,-0.6l-20.8,0c-0.331,0 -0.6,0.269 -0.6,0.6l0,2.8c0,0.331 0.269,0.6 0.6,0.6l20.8,-0c0.331,-0 0.6,-0.269 0.6,-0.6l0,-2.8Zm0,-9c0,-0.331 -0.269,-0.6 -0.6,-0.6l-22.8,-0c-0.331,-0 -0.6,0.269 -0.6,0.6l0,2.8c0,0.331 0.269,0.6 0.6,0.6l22.8,-0c0.331,-0 0.6,-0.269 0.6,-0.6l0,-2.8Zm0,-9c0,-0.331 -0.269,-0.6 -0.6,-0.6l-15.8,-0c-0.331,-0 -0.6,0.269 -0.6,0.6l0,2.8c0,0.331 0.269,0.6 0.6,0.6l15.8,-0c0.331,-0 0.6,-0.269 0.6,-0.6l0,-2.8Z"
+            ></path>
+          </svg>
+        </button>
       </div>
     </div>
   </div>

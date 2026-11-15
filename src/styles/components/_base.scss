@@ -1,5 +1,6 @@
-@use 'sprucecss/scss/spruce' as *;
+@use "sprucecss/scss/spruce" as *;
 
-main{
-    padding-block: spacer('xl');;
+main {
+  padding-block-start: spacer("4xl");
+  padding-block-end: spacer("6xl");
 }

@@ -1,0 +1,96 @@
+---
+//images
+import HTMLImage from "@/assets/html5.svg";
+import CSSImage from "@/assets/css3.svg";
+import JSImage from "@/assets/javascript.svg";
+import SASSImage from "@/assets/sass.svg";
+import TypescriptImage from "@/assets/typescript.svg";
+
+//icons
+import { ExternalLink } from "@lucide/astro";
+
+const hero = {
+  title:
+    'Build your next project with <span class="hero__highlight">Sprucess</span>',
+  subheading:
+    "A collection of professionally designed, fully responsive UI blocks built with Astro and Tailwind CSS.",
+  btns: [
+    {
+      href: "/portfolio",
+      class: "btn btn--primary btn--lg",
+      ariaLabel: "View portfolio",
+      text: "View Portfolio",
+    },
+    {
+      href: "/contact",
+      class: "btn btn--outline-primary btn--lg",
+      ariaLabel: "Contact to hire",
+      text: "Hire Me",
+    },
+  ],
+  technologies: [
+    {
+      href: "#",
+      ariaLabel: "HTML5",
+      text: "HTML5",
+      icon: HTMLImage,
+    },
+    {
+      href: "#",
+      ariaLabel: "CSS3",
+      text: "CSS3",
+      icon: CSSImage,
+    },
+    {
+      href: "#",
+      ariaLabel: "JavaScript",
+      text: "JavaScript",
+      icon: JSImage,
+    },
+    {
+      href: "#",
+      ariaLabel: "SASS",
+      text: "SASS",
+      icon: SASSImage,
+    },
+    {
+      href: "#",
+      ariaLabel: "TypeScript",
+      text: "TypeScript",
+      icon: TypescriptImage,
+    },
+  ],
+};
+---
+
+<section class="hero" data-scroll-animate>
+  <!-- <div class="hero__badge">UI Blocks</div> -->
+  <h1 class="hero__title" data-scroll-animate="" set:html={hero.title} />
+  <p class="hero__subheading" data-scroll-animate="">{hero.subheading}</p>
+  <div class="hero__cta-buttons" data-scroll-animate>
+    {
+      hero.btns.map((btn) => (
+        <a href={btn.href} class={btn.class} aria-label={btn.ariaLabel}>
+          {btn.text}
+        </a>
+      ))
+    }
+  </div>
+  <div class="hero__technologies">
+    <p class="hero__technologies-text">Built with open-source technologies</p>
+    <div class="hero__technologies-logos">
+      {
+        hero.technologies.map((technology) => (
+          <a
+            href={technology.href}
+            class="hero__technology-link"
+            aria-label={technology.ariaLabel}
+          >
+            <technology.icon />
+            <span class="sr-only">{technology.text}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

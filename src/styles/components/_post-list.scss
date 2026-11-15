@@ -1,11 +1,11 @@
-@use 'sprucecss/scss/spruce' as *;
+@use "sprucecss/scss/spruce" as *;
 
 .l-post-list {
   &__inner {
     --columns: 1;
 
     display: grid;
-    gap: spacer('l');
+    gap: spacer("l");
     grid-template-columns: repeat(var(--columns), minmax(0, 2fr));
 
     @include breakpoint(sm) {

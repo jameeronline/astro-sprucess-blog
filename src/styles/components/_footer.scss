@@ -1,32 +1,36 @@
 @use "sass:color";
-@use 'sprucecss/scss/spruce' as *;
+@use "sprucecss/scss/spruce" as *;
 
 .site-footer {
-  padding-block: spacer-clamp('xl', 'xxl');
-  background-color: color.change($color-primary, $lightness: 98%);
+  padding-block: spacer-clamp("m", "xl");
+  background-color: color("code-background");
 
   &__top {
-    @include layout-grid('l', 14rem);
+    @include layout-grid("l", 14rem);
   }
 
   &__logo {
-    display: inline-flex;
+    display: none;
 
     img {
       --size: 2rem;
       block-size: var(--size);
       inline-size: var(--size);
     }
+
+    @include breakpoint("md") {
+      display: inline-flex;
+    }
   }
 
   &__title {
-    font-size: font-size('h4');
-    margin-block: 0 spacer('m');
+    font-size: font-size("h4");
+    margin-block: 0 spacer("m");
   }
 
   &__navigation {
     @include clear-list;
-    @include layout-stack(spacer('xs'));
+    @include layout-stack(spacer("xs"));
 
     a {
       color: color(text);
@@ -35,11 +39,11 @@
       &:hover,
       &:focus,
       &:active,
-      &[aria-current='page'] {
-        color: color('primary');
+      &[aria-current="page"] {
+        color: color("primary");
       }
 
-      &[aria-current='page'] {
+      &[aria-current="page"] {
         font-weight: 700;
       }
     }
@@ -47,22 +51,22 @@
 
   &__bottom {
     align-items: center;
-    border-block-start: 1px solid color('border');
+    border-block-start: 1px solid color("border");
     display: flex;
     flex-wrap: wrap;
-    gap: spacer('s');
+    gap: spacer("s");
     justify-content: space-between;
-    margin-block-start: spacer('l');
-    padding-block-start: spacer('l');
+    margin-block-start: spacer("l");
+    padding-block-start: spacer("l");
   }
 
   &__social {
     align-items: center;
     display: flex;
-    gap: spacer('s');
+    gap: spacer("s");
 
     a {
-      color: color('heading');
+      color: color("heading");
     }
 
     svg {

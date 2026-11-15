@@ -1,65 +1,77 @@
 ---
-const {post} = Astro.props;
+//image component
+import { Image } from "astro:assets";
 
-//utils 
+//props
+const { post, isHorizontal = false } = Astro.props;
+
+//utils
 import { slugify } from "@utils/index.js";
 
 //props
-const {title, url, thumbnail, thumbnailAlt, tags, author, lastUpdatedDate} = post;
+const { title, thumbnail, thumbnailAlt, tags, author, lastUpdatedDate } =
+  post.data;
+
+const url = post.id;
 
 //components
-import PostAuthor from "./PostAuthor.astro"
+import PostAuthor from "./PostAuthor.astro";
 ---
 
-<div class="post-card"  data-scroll-animate>
-  <img
-    class="post-card__thumbnail"
-    src={thumbnail}
-    alt={thumbnailAlt}
-  />
-  <div class="post-card__body">
-    <div class="post-card__meta">
-      <div class="post-card__tags">
-        {
-          tags.map(tag => <a href={`/tag/${slugify(tag)}`}># {tag}</a>)
-        }
-      </div>
-      <time datetime="2022-12-03T00:00:00.000Z">{lastUpdatedDate}</time>
-    </div>
-    <h2 class="post-card__title">
-      <a class="post-card__link" href={`/blog/${url}`}>{title}</a>
-    </h2>
-    <PostAuthor author={author} />
-  </div>
-</div>
-<!-- <div class="post-card post-card--horizontal">
-  <img
-    class="post-card__thumbnail"
-    src="/img/blog/cracking-the-theme-switcher-and-dark-mode.png"
-    alt="Cracking the Theme Switcher and Dark Mode"
-  />
-  <div class="post-card__body">
-    <div class="post-card__meta">
-      <div class="post-card__tags">
-        <a href="#">#css</a>
-        <a href="#">#ui</a>
-      </div>
-      <time datetime="2023-05-30T00:00:00.000Z">May 30, 2023</time>
-    </div>
-    <h2 class="post-card__title">
-      <a class="post-card__link" href="#"
-        >Cracking the Theme Switcher and Dark Mode</a
-      >
-    </h2>
-    <a class="post-author" href="#">
-      <img
-        class="post-author__avatar"
-        src="https://secure.gravatar.com/avatar/fd9479a898c593601efd2fe758a86dba?s=96&d=mm&r=g"
-        alt=""
-        width="38"
-        height="38"
+{
+  isHorizontal ? (
+    <div class="post-card post-card--horizontal">
+      <Image
+      class="post-card__thumbnail"
+      src={thumbnail}
+      alt={thumbnailAlt}
+      quality={90}
+      loading="lazy"
+      decoding="async"
       />
-      <span class="post-author__name">by Adam Laki</span>
-    </a>
-  </div>
-</div> -->
+      <div class="post-card__body">
+      <div class="post-card__meta">
+        <div class="post-card__tags">
+        {tags.map((tag: string) => (
+          <a href={`/tag/${slugify(tag)}`}># {tag}</a>
+        ))}
+        </div>
+        <time datetime={lastUpdatedDate}>{lastUpdatedDate}</time>
+      </div>
+      <h2 class="post-card__title">
+        <a class="post-card__link" href={`/blog/${url}`}>
+        {title}
+        </a>
+      </h2>
+      <PostAuthor author={author} />
+      </div>
+    </div>
+  ) : (
+    <div class="post-card" data-scroll-animate>
+      <Image
+        class="post-card__thumbnail"
+        src={thumbnail}
+        alt={thumbnailAlt}
+        quality={90}
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="post-card__body">
+        <div class="post-card__meta">
+          <div class="post-card__tags">
+            {tags.map((tag: string) => (
+              <a href={`/tag/${slugify(tag)}`}># {tag}</a>
+            ))}
+          </div>
+          <time datetime={lastUpdatedDate}>{lastUpdatedDate}</time>
+        </div>
+        <h2 class="post-card__title">
+          <a class="post-card__link" href={`/blog/${url}`}>
+            {title}
+          </a>
+        </h2>
+        <PostAuthor author={author} />
+      </div>
+    </div>
+  )
+}

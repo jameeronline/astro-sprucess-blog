@@ -1,0 +1,15 @@
+@use 'sprucecss/scss/spruce' as *;
+
+.form-notes{
+    color: color('text');
+    margin-block: 0;
+}
+
+.form-flex{
+    --inline-size: 10rem;
+    @include layout-flex('m');
+}
+
+.form-label{
+    font-weight: 700;
+}

@@ -1,10 +1,10 @@
-@use 'sprucecss/scss/spruce' as *;
+@use "sprucecss/scss/spruce" as *;
 
 .l-feature {
   &__inner {
-    @include layout-stack(spacer-clamp('xl', 'xxl'));
+    @include layout-stack(spacer-clamp("xl", "xxl"));
 
-    @include breakpoint('md') {
+    @include breakpoint("md") {
       > * + * {
         margin-block-start: 0;
       }
@@ -18,28 +18,28 @@
   align-items: center;
   display: grid;
   grid-template-columns: repeat(var(--column), minmax(0, 1fr));
-  row-gap: spacer('m');
+  row-gap: spacer("m");
 
-  @include breakpoint('md') {
+  @include breakpoint("md") {
     --column: 2;
   }
 
   &--start {
-    @include breakpoint('md') {
+    @include breakpoint("md") {
       #{$this}__caption {
-        padding-inline-start: spacer-clamp('l', 'xl');
+        padding-inline-start: spacer-clamp("l", "xl");
       }
     }
   }
 
   &--end {
-    @include breakpoint('md') {
+    @include breakpoint("md") {
       #{$this}__thumbnail {
         order: 1;
       }
 
       #{$this}__caption {
-        padding-inline-end: spacer-clamp('l', 'xl');
+        padding-inline-end: spacer-clamp("l", "xl");
       }
     }
   }
@@ -48,34 +48,36 @@
     block-size: 100%;
     object-fit: cover;
     object-position: center;
+    background-color: color("border");
+    inline-size: 100%;
   }
 
   &__caption {
-    @include layout-stack('s');
+    @include layout-stack("s");
 
-    @include breakpoint('md') {
-      padding-block: spacer-clamp('xl', 8rem, 7.5vw);
+    @include breakpoint("md") {
+      padding-block: spacer-clamp("xl", 8rem, 7.5vw);
     }
   }
 
   &__subtitle {
     align-items: center;
-    background-color: color('subtitle-background', 'feature');
-    border: 1px solid color('subtitle-border', 'feature');
-    border-radius: config('border-radius-lg', $display);
-    color: color('primary');
+    background-color: color("subtitle-background", "feature");
+    border: 1px solid color("subtitle-border", "feature");
+    border-radius: config("border-radius-lg", $display);
+    color: color("primary");
     display: inline-flex;
     font-size: 0.9375rem;
     gap: 0.65rem;
-    padding: 0.15em spacer('s');
+    padding: 0.15em spacer("s");
     text-align: start;
   }
 
   &__title {
-    font-size: responsive-font-size(3rem, 25, '4vw + 1rem');
+    font-size: responsive-font-size(3rem, 25, "4vw + 1rem");
   }
 
   &__btn {
-    margin-block-start: spacer('m');
+    margin-block-start: spacer("m");
   }
 }

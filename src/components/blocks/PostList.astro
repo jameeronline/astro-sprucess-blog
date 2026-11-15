@@ -1,14 +1,12 @@
 ---
-const {posts} = Astro.props;
+const { posts } = Astro.props;
 
-//components 
+//components
 import PostCard from "./PostCard.astro";
 ---
 
 <div class="l-post-list">
-    <div class="l-post-list__inner">
-      {
-        posts.map(post => <PostCard post={post} />)
-      }
-    </div>
+  <div class="l-post-list__inner">
+    {posts.map((post) => <PostCard post={post} />)}
+  </div>
 </div>

@@ -1,4 +1,7 @@
 ---
+//astro imports
+import { getCollection } from "astro:content";
+
 //import layout
 import BaseLayout from "@layouts/BaseLayout.astro";
 
@@ -10,24 +13,32 @@ import ServicesCard from "@/components/blocks/ServicesCard.astro";
 import Alerts from "@/components/ui/Alerts.astro";
 import Loader from "@/components/ui/Loader.astro";
 import State from "@/components/blocks/State.astro";
+
+import PaymentCard from "@/components/blocks/PaymentCard.astro";
+import Hero from "@/components/blocks/Hero.astro";
+import RecentPosts from "@/components/blocks/RecentPosts.astro";
+
+//recent posts
+const recentPosts = (await getCollection("posts"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+if (!recentPosts) {
+  throw new Error("No posts found");
+}
 ---
 
 <BaseLayout>
-  <Loader />
+  <Hero />
+  <!-- <Loader />
   <State />
-  <section class="section">
-  <h2 class="section-title">Our Services</h2>
-    <ServicesCard />
-  </section>
-  <section class="section" data-scroll-animate>
-    <h2 class="section-title" data-scroll-animate>Our Achievements</h2>
-    <NumberCard />
-  </section>
+  <PaymentCard /> -->
+  <ServicesCard />
+  <NumberCard />
   <CTA />
-</BaseLayout>
+  <RecentPosts posts={recentPosts} />
 </BaseLayout>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-});
+  document.addEventListener("DOMContentLoaded", function () {});
 </script>

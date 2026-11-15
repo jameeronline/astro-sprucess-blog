@@ -1,7 +1,24 @@
 import { defineCollection, z } from "astro:content";
 import { glob, file } from "astro/loaders";
 
-// const blogCollection = defineCollection({
+const posts = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/posts" }),
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()),
+    author: z.object({
+      name: z.string(),
+      url: z.string(),
+      avatar: z.string(), // Use Image type for local images
+    }),
+    thumbnail: image().optional(), // Use Astro's Image type for local images
+    thumbnailAlt: z.string(),
+    summary: z.string().optional(),
+  }),
+});
+
+// const blog = defineCollection({
 //   type: "content",
 //   schema: z.object({
 //     title: z.string(),
@@ -22,7 +39,7 @@ const movies = defineCollection({
     year: z.number(),
     language: z.string(),
     releaseDate: z.string(),
-    genre: z.string()
+    genre: z.string(),
   }),
 });
 
@@ -53,4 +70,4 @@ const users = defineCollection({
   }),
 });
 
-export const collections = { users, movies };
+export const collections = { users, movies, posts };

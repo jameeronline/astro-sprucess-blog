@@ -1,26 +1,49 @@
 ---
+const cta = {
+  title: "Crafting Modern, Accessible Frontend Experiences",
+  description:
+    "I'm a frontend developer building pixel-perfect, performant, and accessible interfaces using React, Astro, TypeScript, and modern CSS. I focus on responsive design, fast load times, and UX-driven solutions that help products convert and scale.",
+  meta: "Specializing in React, Astro, TypeScript, and Modern CSS for high-performance, accessible web experiences.",
+  buttons: [
+    {
+      href: "/portfolio",
+      class: "btn btn--primary btn--lg",
+      ariaLabel: "View portfolio",
+      text: "View Portfolio",
+    },
+    {
+      href: "/contact",
+      class: "btn btn--outline-primary btn--lg",
+      ariaLabel: "Contact to hire",
+      text: "Hire Me",
+    },
+  ],
+};
 ---
 
 <div class="call-to-action">
-    <h2 class="call-to-action__title" data-scroll-animate>
-        Crafting Modern, Accessible Frontend Experiences
-    </h2>
-    <div class="call-to-action__caption" data-scroll-animate>
-        <p class="call-to-action__description">
-            I'm a frontend developer building pixel-perfect, performant, and accessible interfaces using
-            React, Astro, TypeScript, and modern CSS. I focus on responsive design, fast load times,
-            and UX-driven solutions that help products convert and scale.
-        </p>
-        <p class="call-to-action__meta" data-scroll-animate>
-            Specialties: React · Astro · TypeScript · CSS Modules · Responsive &amp; Accessible UI
-        </p>
-        <div class="call-to-action__btns" data-scroll-animate>
-            <a href="/portfolio" class="btn btn--primary btn--lg" aria-label="View portfolio">
-                View Portfolio
-            </a>
-            <a href="/contact" class="btn btn--outline-primary btn--lg" aria-label="Contact to hire">
-                Hire Me
-            </a>
-        </div>
+  <h2 class="call-to-action__title" data-scroll-animate>
+    {cta.title}
+  </h2>
+  <div class="call-to-action__body" data-scroll-animate>
+    <p class="call-to-action__description">
+      {cta.description}
+    </p>
+    <p class="call-to-action__meta" data-scroll-animate>
+      {cta.meta}
+    </p>
+    <div class="call-to-action__btns" data-scroll-animate>
+      {
+        cta.buttons.map((button) => (
+          <a
+            href={button.href}
+            class={button.class}
+            aria-label={button.ariaLabel}
+          >
+            {button.text}
+          </a>
+        ))
+      }
     </div>
+  </div>
 </div>

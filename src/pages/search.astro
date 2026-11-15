@@ -55,10 +55,6 @@ if (q && allUsers.length > 0) {
 
 <BaseLayout>
   <PageHeading title="Search" />
-
-    {q && (
-        <p>Search Query: <strong>{q}</strong></p>
-    )}
   
   <div class="container">
     
@@ -105,7 +101,7 @@ if (q && allUsers.length > 0) {
     )}
 
     <!-- Show all users if no search query -->
-    {!q && allUsers.length > 0 && (
+    <!-- {!q && allUsers.length > 0 && (
       <div class="all-users">
         <h2>All Users ({allUsers.length})</h2>
         <div class="user-grid">
@@ -118,7 +114,7 @@ if (q && allUsers.length > 0) {
           ))}
         </div>
       </div>
-    )}
+    )} -->
 
     {collectionError && (
       <div class="error-message" style="color: red; padding: 1rem; background: #ffebee; border-radius: 8px;">

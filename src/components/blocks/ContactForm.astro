@@ -1,0 +1,78 @@
+---
+import { SendHorizontal } from "@lucide/astro";
+---
+
+<form id="contactForm" method="POST" action="/api/contact" class="contact-form">
+  <div class="form-flex">
+    <div class="form-group">
+      <label class="form-label" for="first-name">First Name</label>
+      <input
+        class="form-control form-control--lg"
+        id="first-name"
+        name="first-name"
+        type="text"
+        placeholder="John"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="last-name">Last Name</label>
+      <input
+        class="form-control form-control--lg"
+        id="last-name"
+        name="last-name"
+        type="text"
+        placeholder="Deo"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="email">Email</label>
+    <input
+      class="form-control form-control--lg"
+      id="email"
+      name="your-email"
+      type="email"
+      placeholder="john@example.com"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="subject">Subject</label>
+    <input
+      class="form-control form-control--lg"
+      id="subject"
+      name="your-subject"
+      type="text"
+      placeholder="General Inquiry"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="message">Message</label>
+    <textarea
+      class="form-control form-control--lg"
+      id="message"
+      name="your-message"
+      placeholder="How can we help you?"
+      required></textarea>
+    <small class="form-notes"
+      >Please provide as much detail as possible in your message.</small
+    >
+  </div>
+
+  <button type="submit" class="btn btn--primary btn--block btn--lg"
+    >Send Message
+    <SendHorizontal class="btn__icon" aria-hidden="true" />
+  </button>
+  <p
+    id="formStatus"
+    style="margin-top:.5rem;font-size:.95rem;color:green;display:none;"
+  >
+    Message sent.
+  </p>
+</form>

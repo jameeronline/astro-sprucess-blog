@@ -1,0 +1,171 @@
+---
+const teams = [
+    {
+        id: 1,
+        name: "Engineering",
+        description: "Builds and maintains the product infrastructure and platform.",
+        members: 12,
+        lead: { name: "Alice Johnson" },
+        color: "#2563eb"
+    },
+    {
+        id: 2,
+        name: "Design",
+        description: "Creates delightful UX and visual design across the product.",
+        members: 6,
+        lead: { name: "Marco Lee" },
+        color: "#db2777"
+    },
+    {
+        id: 3,
+        name: "Product",
+        description: "Defines strategy, roadmap, and customer outcomes.",
+        members: 5,
+        lead: { name: "Priya N." },
+        color: "#059669"
+    },
+    {
+        id: 4,
+        name: "Marketing",
+        description: "Drives awareness, acquisition, and brand growth.",
+        members: 7,
+        lead: { name: "Jamal Ameer" },
+        color: "#f59e0b"
+    },
+    {
+        id: 5,
+        name: "Customer Success",
+        description: "Supports customers and improves retention.",
+        members: 4,
+        lead: { name: "Rita Gomez" },
+        color: "#8b5cf6"
+    },
+    {
+        id: 6,
+        name: "QA",
+        description: "Ensures product quality with automated and manual tests.",
+        members: 3,
+        lead: { name: "Ken Wu" },
+        color: "#06b6d4"
+    }
+];
+
+function initials(name: string) {
+    return name
+        .split(" ")
+        .map((s) => s[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase();
+}
+---
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Teams</title>
+        <style>
+            :root{
+                --bg:#0f172a;
+                --card:#0b1220;
+                --muted:#94a3b8;
+                --glass: rgba(255,255,255,0.03);
+            }
+            html,body{height:100%}
+            body{
+                margin:0;
+                font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+                background:linear-gradient(180deg,var(--bg) 0%, #071028 100%);
+                color:#e6eef8;
+                padding:40px;
+            }
+            .container{
+                max-width:1100px;
+                margin:0 auto;
+            }
+            header{margin-bottom:28px}
+            h1{margin:0;font-size:28px}
+            p.lead{margin:6px 0 0;color:var(--muted)}
+            .grid{
+                display:grid;
+                grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+                gap:18px;
+                margin-top:20px;
+            }
+            .card{
+                background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+                border:1px solid rgba(255,255,255,0.03);
+                padding:16px;
+                border-radius:12px;
+                transition:transform .16s ease, box-shadow .16s ease;
+                display:flex;
+                gap:12px;
+                align-items:center;
+            }
+            .card:hover{
+                transform:translateY(-6px);
+                box-shadow:0 8px 30px rgba(2,6,23,0.6);
+            }
+            .avatar{
+                width:56px;
+                height:56px;
+                border-radius:12px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                color:white;
+                font-weight:700;
+                font-size:16px;
+                flex-shrink:0;
+            }
+            .meta{flex:1;min-width:0}
+            .team-name{font-weight:700;margin:0 0 6px;font-size:15px;display:flex;gap:8px;align-items:center;}
+            .muted{color:var(--muted);font-size:13px;margin:0 0 8px}
+            .stats{display:flex;gap:12px;color:var(--muted);font-size:13px}
+            .pill{
+                background:var(--glass);
+                padding:6px 8px;
+                border-radius:999px;
+                font-size:12px;
+                color:var(--muted);
+            }
+            @media (max-width:420px){body{padding:18px} .avatar{width:48px;height:48px}}
+        </style>
+    </head>
+    <body>
+        <main class="container" role="main">
+            <header>
+                <h1>Teams</h1>
+                <p class="lead">Overview of teams and their leads. Click a card to view more (example only).</p>
+            </header>
+
+            <section class="grid" role="list">
+                {teams.map((team) => (
+                    <article class="card" role="listitem" aria-labelledby={`team-${team.id}-name`}>
+                        <div
+                            class="avatar"
+                            style={`background: linear-gradient(135deg, ${team.color}, rgba(255,255,255,0.06));`}
+                            aria-hidden="true"
+                        >
+                            {initials(team.lead.name)}
+                        </div>
+
+                        <div class="meta">
+                            <h2 id={`team-${team.id}-name`} class="team-name">
+                                {team.name}
+                                <span class="pill" title="Members">{team.members} members</span>
+                            </h2>
+
+                            <p class="muted">{team.description}</p>
+
+                            <div class="stats" aria-hidden="true">
+                                <div>Lead: <strong style="color:#fff;margin-left:6px">{team.lead.name}</strong></div>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </section>
+        </main>
+    </body>
+</html>

@@ -1,26 +1,27 @@
-@use 'sprucecss/scss/spruce' as *;
+@use "sprucecss/scss/spruce" as *;
 
 .info-card {
   $this: &;
-
-  @include a11y-card-link('.info-card__link', true);
+  @include a11y-card-link(".info-card__link", true);
   @include transition;
-  border: 1px solid color('border');
-  border-radius: config('border-radius-lg', $display);
-  color: color('text');
+  border: 1px solid color("border");
+  border-radius: config("border-radius-lg", $display);
+  color: color("text");
   display: flex;
   flex-direction: column;
-  gap: spacer('m');
-  padding: spacer-clamp('m', 'l');
+  gap: spacer("m");
+  padding: spacer-clamp("m", "l");
 
   &:hover {
-    @include set-css-variable((
-      --base-color-heading: hsl(0deg 0% 100%),
-      --base-color-link: hsl(0deg 0% 100%),
-      --base-color-link-hover: hsl(0deg 0% 100%),
-      --base-color-text: hsl(0deg 0% 100%),
-    ));
-    background-color: color('primary');
+    @include set-css-variable(
+      (
+        --base-color-heading: hsl(0deg 0% 100%),
+        --base-color-link: hsl(0deg 0% 100%),
+        --base-color-link-hover: hsl(0deg 0% 100%),
+        --base-color-text: hsl(0deg 0% 100%),
+      )
+    );
+    background-color: color("primary");
     transform: translateY(-0.5rem);
   }
 
@@ -29,7 +30,7 @@
   }
 
   &__caption {
-    @include layout-stack('s');
+    @include layout-stack("s");
   }
 
   &__title {
@@ -37,7 +38,7 @@
     font-weight: 400;
 
     a {
-      color: color('heading');
+      color: color("heading");
       text-decoration: none;
     }
   }
@@ -48,6 +49,6 @@
 
   &__wrapper {
     --inline-size: 20rem;
-    @include layout-flex('m');
+    @include layout-flex("l");
   }
 }

@@ -1,28 +1,21 @@
+@use "sass:color";
 @use 'sprucecss/scss/spruce' as *;
 
 .contact-grid {
-  @include layout-grid('m', 20rem);
+  @include layout-grid('xl', 20rem);
 }
 
 .contact-form {
   $this: &;
 
   border-radius: config('border-radius-lg', $display);
+  background-color: color('background');
+  border: 1px solid color('border');
   color: color('text');
-  background-color: color('stripe', 'table' );
   display: flex;
   flex-direction: column;
   gap: spacer('m');
-  padding: spacer-clamp('m', 'l');
-
-  // &:hover {
-  //   @include set-css-variable((
-  //     --base-color-heading: hsl(0deg 0% 100%),
-  //     --base-color-link: hsl(0deg 0% 100%),
-  //     --base-color-link-hover: hsl(0deg 0% 100%),
-  //     --base-color-text: hsl(0deg 0% 100%),
-  //   ));
-  // }
+  padding: spacer('l');
 
   > * {
     margin-block: 0;

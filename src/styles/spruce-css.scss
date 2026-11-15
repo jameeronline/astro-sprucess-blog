@@ -1,129 +1,284 @@
-@use 'sass:color';
+@use "sass:color";
+
+//light theme
+$color-light-primary: hsl(265, 84%, 34%);
+$color-light-secondary: hsl(201, 100%, 14%);
+$color-light-success: hsl(145, 63%, 41%);
+$color-light-danger: hsl(354, 70%, 54%);
+$color-light-warning: hsl(39, 100%, 50%);
+$color-light-info: hsl(197, 100%, 40%);
+
+//dark theme
+$color-dark-black: hsl(206deg 100% 7%);
+$color-dark-danger: hsl(0deg 71% 51%);
+$color-dark-gray: hsl(0deg 0% 97%);
+$color-dark-gray-light: hsl(0deg 0% 100% / 8%);
+$color-dark-primary: hsl(261deg 54% 70%);
+$color-dark-secondary: hsl(227deg 92% 55%);
+$color-dark-success: hsl(150deg 100% 33%);
+$color-dark-white: hsl(0deg 0% 95%);
+
+//vibrant theme
+$color-vibrant-black: hsl(159, 83%, 16%);
+$color-vibrant-danger: hsl(0deg 71% 51%);
+$color-vibrant-gray: hsl(0deg 0% 97%);
+$color-vibrant-gray-light: hsl(0deg 0% 100% / 8%);
+$color-vibrant-primary: hsl(159, 67%, 71%);
+$color-vibrant-secondary: hsl(61, 92%, 55%);
+$color-vibrant-success: hsl(150deg 100% 33%);
+$color-vibrant-white: hsl(0deg 0% 95%);
+
+//spacing
+$spacer-base: 1rem;
 
 //core framework
-@use 'sprucecss/scss/spruce' as * with (
-    $color-primary: hsl(209, 100%, 20%),
-    $color-secondary: hsl(46, 100%, 50%),
-    $color-success: hsl(145, 63%, 41%),
-    $color-danger: hsl(354, 70%, 54%),
-    $colors: (
-    'alert': (
-        'danger': hsl(354, 70%, 54%),
-        'success': hsl(145, 63%, 41%),
-        'info': hsl(197, 100%, 40%),
-        'warning': hsl(39, 100%, 50%),
+@use "sprucecss/scss/spruce" as * with (
+  //themes colors
+  $color-primary: $color-light-primary,
+  $color-secondary: $color-light-secondary,
+  $color-success: $color-light-success,
+  $color-danger: $color-light-danger,
+  $colors: (
+    "alert": (
+      "danger": $color-light-danger,
+      "success": $color-light-success,
+      "info": $color-light-info,
+      "warning": $color-light-warning,
     ),
-    'btn': (
-        'danger-background': hsl(354, 70%, 54%),
-        'danger-background-hover': hsl(354, 70%, 60%),
-        'danger-foreground': hsl(0deg 0% 100%),
-        'danger-shadow': hsl(354, 70%, 40%),
-
-        'success-background': hsl(145, 63%, 41%),
-        'success-background-hover': hsl(145, 63%, 46%),
-        'success-foreground': hsl(0deg 0% 100%),
-        'success-shadow': hsl(145, 63%, 28%),
+    "btn": (
+      "danger-background": $color-light-danger,
+      "danger-background-hover": hsl(354, 70%, 45%),
+      "danger-foreground": hsl(0deg 0% 100%),
+      "danger-shadow": hsl(354, 70%, 40%),
+      "success-background": hsl(145, 63%, 41%),
+      "success-background-hover": hsl(145, 63%, 36%),
+      "success-foreground": hsl(0deg 0% 100%),
+      "success-shadow": hsl(145, 63%, 28%),
     ),
-    'breadcrumb': (
-        'separator': hsl(0deg 0% 80%),
+    "breadcrumb": (
+      "separator": hsl(0deg 0% 80%),
     ),
-    'feature': (
-        'subtitle-background': hsl(259deg 53% 98%),
-        'subtitle-border': hsl(259deg 53% 93%),
-        )
+    "feature": (
+      "subtitle-background": hsl(259deg 53% 98%),
+      "subtitle-border": hsl(259deg 53% 93%),
     ),
-    $typography: (
-        //'font-family': #{'IBM Plex Sans Variable', sans-serif},
-        'font-family-base': #{'Inter Variable', sans-serif},
-        'font-family-heading': #{'Poppins', sans-serif},
+    "brand": (
+      "primary-lightest": hsl(231, 100%, 94%),
+      "primary-lighter": hsl(231, 100%, 82%),
+      "primary-light": hsl(240, 90%, 66%),
+      "primary": hsl(245, 81%, 60%),
+      "primary-dark": hsl(246, 61%, 51%),
+      "primary-darker": hsl(246, 58%, 42%),
+      "primary-darkest": hsl(245, 49%, 35%),
+      "secondary-lightest": hsl(341, 100%, 94%),
+      "secondary-lighter": hsl(339, 100%, 89%),
+      "secondary-300": hsl(339, 100%, 80%),
+      "secondary-light": hsl(338, 100%, 68%),
+      "secondary": hsl(336, 100%, 57%),
+      "secondary-dark": hsl(334, 100%, 42%),
+      "secondary-darker": hsl(331, 100%, 35%),
+      "secondary-darkest": hsl(329, 97%, 30%),
     )
+  ),
+  $typography: (
+    "font-family": #{"IBM Plex Sans Variable",
+    sans-serif},
+    "font-family-base": #{"Inter Variable",
+    sans-serif},
+    //'font-family-heading': #{'Poppins', sans-serif},
+    "font-family-heading": #{"Outfit Variable",
+    sans-serif}
+  ),
+  $spacers: (
+    "xxs": $spacer-base * 0.25,
+    // 4px
+    "xs": $spacer-base * 0.5,
+    // 8px
+    "s": $spacer-base,
+    // 16px
+    "m": $spacer-base * 1.5,
+    // 24px
+    "l": $spacer-base * 2,
+    // 32px
+    "xl": $spacer-base * 2.5,
+    // 40px
+    "xxl": $spacer-base * 3,
+    // 48px
+    "xxxl": $spacer-base * 3.5,
+    // 56px
+    "4xl": $spacer-base * 4,
+    // 64px
+    "5xl": $spacer-base * 4.5,
+    // 72px
+    "6xl": $spacer-base * 5,
+    // 80px
+    "7xl": $spacer-base * 5.5,
+    // 88px
+    "8xl": $spacer-base * 6,
+    // 96px
+    "9xl": $spacer-base * 8,
+    // 128px
+    "10xl": $spacer-base * 10,
+    // 160px
+  )
 );
 
-$color-black: hsl(206deg 100% 7%);
-$color-danger: hsl(0deg 71% 51%);
-$color-gray: hsl(0deg 0% 97%);
-$color-gray-dark: hsl(0deg 0% 100% / 8%);
-$color-primary: hsl(261deg 54% 70%);
-$color-secondary: hsl(227deg 92% 55%);
-$color-success: hsl(150deg 100% 33%);
-$color-white: hsl(0deg 0% 95%);
-
 $dark-colors: (
-    'base': (
-        'background': $color-black,
-        'blockquote-border': $color-primary,
-        'border': $color-gray-dark,
-        'code-background': hsl(207deg 64% 18%),
-        'code-foreground': $color-white,
-        'heading': $color-white,
-        'link': $color-primary,
-        'link-hover': color.scale($color-primary, $lightness: 20%),
-        'mark-background': hsl(50deg 100% 80%),
-        'mark-foreground': $color-black,
-        'marker': $color-primary,
-        'primary': $color-primary,
-        'secondary': $color-secondary,
-        'text': $color-gray,
-    ),
-    'btn': (
-        'primary-background': hsl(261deg 52% 59%),
-        'primary-background-hover': hsl(261deg 52% 65%),
-        'primary-foreground': $color-white,
-        'primary-shadow': color.adjust($color-primary, $lightness: -25%),
-        'secondary-background': $color-secondary,
-        'secondary-background-hover': color.adjust($color-secondary, $lightness: 5%),
-        'secondary-foreground': $color-white,
-        'secondary-shadow': color.adjust($color-secondary, $lightness: -20%),
-    ),
-    'form': (
-        'background': color.scale($color-black, $lightness: 5%),
-        'background-disabled': $color-black,
-        'border': $color-gray-dark,
-        'border-disabled': $color-gray-dark,
-        'border-focus': $color-primary,
-        'check-background': $color-primary,
-        'check-focus-ring': $color-primary,
-        'check-foreground': $color-black,
-        'group-label-background': color.scale($color-black, $lightness: 2.5%),
-        'group-label-foreground': $color-gray,
-        'invalid': $color-danger,
-        'invalid-focus-ring': color.adjust($color-danger, $alpha: -0.75),
-        'label': $color-white,
-        'legend': $color-white,
-        'placeholder': hsl(0deg 0% 60%),
-        'range-thumb-background': $color-primary,
-        'range-thumb-focus-ring': $color-primary,
-        'range-track-background': hsl(206deg 100% 20%),
-        'ring-focus': color.adjust($color-primary, $alpha: -0.75),
-        'select-foreground': hsl(0deg 0% 100%),
-        'text': $color-gray,
-        'valid': $color-success,
-        'valid-focus-ring': color.adjust($color-success, $alpha: -0.75),
-    ),
-    'selection': (
-        'background': $color-primary,
-        'foreground': $color-white,
-    ),
-    'scrollbar': (
-        'thumb-background': hsl(0deg 0% 100% / 15%),
-        'thumb-background-hover': hsl(0deg 0% 100% / 25%),
-        'track-background': hsl(0deg 0% 100% / 5%),
-    ),
-    'table': (
-        'border': $color-gray-dark,
-        'caption': $color-gray,
-        'heading': $color-white,
-        'hover': hsl(0deg 0% 100% / 5%),
-        'text': $color-gray,
-        'stripe': hsl(0deg 0% 100% / 2.5%),
-    )
+  "base": (
+    "background": $color-dark-black,
+    "blockquote-border": $color-dark-primary,
+    "border": $color-dark-gray-light,
+    "code-background": hsl(207deg 64% 18%),
+    "code-foreground": $color-dark-white,
+    "heading": $color-dark-white,
+    "link": $color-dark-primary,
+    "link-hover": color.scale($color-dark-primary, $lightness: 20%),
+    "mark-background": hsl(50deg 100% 80%),
+    "mark-foreground": $color-dark-black,
+    "marker": $color-dark-primary,
+    "primary": $color-dark-primary,
+    "secondary": $color-dark-secondary,
+    "text": $color-dark-gray,
+  ),
+  "btn": (
+    "primary-background": hsl(261deg 52% 59%),
+    "primary-background-hover": hsl(261deg 52% 65%),
+    "primary-foreground": $color-dark-white,
+    "primary-shadow": color.adjust($color-dark-primary, $lightness: -25%),
+    "secondary-background": $color-dark-secondary,
+    "secondary-background-hover":
+      color.adjust($color-dark-secondary, $lightness: 5%),
+    "secondary-foreground": $color-dark-white,
+    "secondary-shadow": color.adjust($color-dark-secondary, $lightness: -20%),
+  ),
+  "form": (
+    "background": color.scale($color-dark-black, $lightness: 5%),
+    "background-disabled": $color-dark-black,
+    "border": $color-dark-gray-light,
+    "border-disabled": $color-dark-gray-light,
+    "border-focus": $color-dark-primary,
+    "check-background": $color-dark-primary,
+    "check-focus-ring": $color-dark-primary,
+    "check-foreground": $color-dark-black,
+    "group-label-background": color.scale($color-dark-black, $lightness: 2.5%),
+    "group-label-foreground": $color-dark-gray,
+    "invalid": $color-dark-danger,
+    "invalid-focus-ring": color.adjust($color-dark-danger, $alpha: -0.75),
+    "label": $color-dark-white,
+    "legend": $color-dark-white,
+    "placeholder": hsl(0deg 0% 60%),
+    "range-thumb-background": $color-dark-primary,
+    "range-thumb-focus-ring": $color-dark-primary,
+    "range-track-background": hsl(206deg 100% 20%),
+    "ring-focus": color.adjust($color-dark-primary, $alpha: -0.75),
+    "select-foreground": hsl(0deg 0% 100%),
+    "text": $color-dark-gray,
+    "valid": $color-dark-success,
+    "valid-focus-ring": color.adjust($color-dark-success, $alpha: -0.75),
+  ),
+  "selection": (
+    "background": $color-dark-primary,
+    "foreground": $color-dark-white,
+  ),
+  "scrollbar": (
+    "thumb-background": hsl(0deg 0% 100% / 15%),
+    "thumb-background-hover": hsl(0deg 0% 100% / 25%),
+    "track-background": hsl(0deg 0% 100% / 5%),
+  ),
+  "table": (
+    "border": $color-dark-gray-light,
+    "caption": $color-dark-gray,
+    "heading": $color-dark-white,
+    "hover": hsl(0deg 0% 100% / 5%),
+    "text": $color-dark-gray,
+    "stripe": hsl(0deg 0% 100% / 2.5%),
+  ),
+);
+
+$vibrent-colors: (
+  "base": (
+    "background": $color-vibrant-black,
+    "blockquote-border": $color-vibrant-primary,
+    "border": $color-vibrant-gray-light,
+    "code-background": hsl(207deg 64% 18%),
+    "code-foreground": $color-vibrant-white,
+    "heading": $color-vibrant-white,
+    "link": $color-vibrant-primary,
+    "link-hover": color.scale($color-vibrant-primary, $lightness: 20%),
+    "mark-background": hsl(50deg 100% 80%),
+    "mark-foreground": $color-vibrant-black,
+    "marker": $color-vibrant-primary,
+    "primary": $color-vibrant-primary,
+    "secondary": $color-vibrant-secondary,
+    "text": $color-vibrant-gray,
+  ),
+  "btn": (
+    "primary-background": hsl(261deg 52% 59%),
+    "primary-background-hover": hsl(261deg 52% 65%),
+    "primary-foreground": $color-vibrant-white,
+    "primary-shadow": color.adjust($color-vibrant-primary, $lightness: -25%),
+    "secondary-background": $color-vibrant-secondary,
+    "secondary-background-hover":
+      color.adjust($color-vibrant-secondary, $lightness: 5%),
+    "secondary-foreground": $color-vibrant-white,
+    "secondary-shadow": color.adjust($color-vibrant-secondary, $lightness: -20%),
+  ),
+  "form": (
+    "background": color.scale($color-vibrant-black, $lightness: 5%),
+    "background-disabled": $color-vibrant-black,
+    "border": $color-vibrant-gray-light,
+    "border-disabled": $color-vibrant-gray-light,
+    "border-focus": $color-vibrant-primary,
+    "check-background": $color-vibrant-primary,
+    "check-focus-ring": $color-vibrant-primary,
+    "check-foreground": $color-vibrant-black,
+    "group-label-background":
+      color.scale($color-vibrant-black, $lightness: 2.5%),
+    "group-label-foreground": $color-vibrant-gray,
+    "invalid": $color-vibrant-danger,
+    "invalid-focus-ring": color.adjust($color-vibrant-danger, $alpha: -0.75),
+    "label": $color-vibrant-white,
+    "legend": $color-vibrant-white,
+    "placeholder": hsl(0deg 0% 60%),
+    "range-thumb-background": $color-vibrant-primary,
+    "range-thumb-focus-ring": $color-vibrant-primary,
+    "range-track-background": hsl(206deg 100% 20%),
+    "ring-focus": color.adjust($color-vibrant-primary, $alpha: -0.75),
+    "select-foreground": hsl(0deg 0% 100%),
+    "text": $color-vibrant-gray,
+    "valid": $color-vibrant-success,
+    "valid-focus-ring": color.adjust($color-vibrant-success, $alpha: -0.75),
+  ),
+  "selection": (
+    "background": $color-vibrant-primary,
+    "foreground": $color-vibrant-white,
+  ),
+  "scrollbar": (
+    "thumb-background": hsl(0deg 0% 100% / 15%),
+    "thumb-background-hover": hsl(0deg 0% 100% / 25%),
+    "track-background": hsl(0deg 0% 100% / 5%),
+  ),
+  "table": (
+    "border": $color-vibrant-gray-light,
+    "caption": $color-vibrant-gray,
+    "heading": $color-vibrant-white,
+    "hover": hsl(0deg 0% 100% / 5%),
+    "text": $color-vibrant-gray,
+    "stripe": hsl(0deg 0% 100% / 2.5%),
+  ),
 );
 
 //dark theme colors
 @include generate-color-variables(
-    $dark-colors,
-    ':root[data-theme-mode="dark"]'
+  $dark-colors,
+  ':root[data-theme-mode="dark"]'
 );
+
+//vibrant theme colors
+// @include generate-color-variables(
+//   $vibrant-colors,
+//   ':root[data-theme-mode="vibrant"]'
+// );
 
 //generate base styles
 @include generate-styles;
@@ -132,7 +287,6 @@ $dark-colors: (
 @import "./components";
 @import "./blocks";
 @import "./utils";
-
 
 // Import addons
 @import "./addons";
