@@ -66,22 +66,22 @@ const stats: NumberCard[] = [
     const counters = document.querySelectorAll('[data-action="countup"]');
     const duration = 3500;
 
-    const countUp = (element, target) => {
+    const countUp = (element: Element, target: number) => {
       let current = 0;
-      let startTime = null;
+      let startTime: number | null = null;
 
-      const updateCounter = (timestamp) => {
-        if (!startTime) startTime = timestamp;
+      const updateCounter = (timestamp: number) => {
+        if (startTime === null) startTime = timestamp;
         const progress = timestamp - startTime;
         const easing = 1 - (1 - progress / duration) ** 3;
         current = Math.min(target, target * easing);
 
-        element.textContent = Math.floor(current);
+        element.textContent = String(Math.floor(current));
 
         if (progress < duration) {
           requestAnimationFrame(updateCounter);
         } else {
-          element.textContent = target;
+          element.textContent = String(target);
         }
       };
 

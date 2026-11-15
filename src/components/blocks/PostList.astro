@@ -1,5 +1,11 @@
 ---
-const { posts } = Astro.props;
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+}
+
+const { posts }: Props = Astro.props;
 
 //components
 import PostCard from "./PostCard.astro";

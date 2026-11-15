@@ -1,8 +1,8 @@
 ---
 //types
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
 //fonts
@@ -55,10 +55,5 @@ const {
     <!-- scripts -->
     <LocalScript />
     <ScrollAnimate />
-
-    <script type="module">
-      import Swup from "swup";
-      const swup = new Swup();
-    </script>
   </body>
 </html>

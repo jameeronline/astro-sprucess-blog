@@ -6,7 +6,6 @@ import { posts } from "@utils/posts.js";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 //components
-import Breadcrumb from "@components/Breadcrumb.astro";
 import PostHeading from "@components/blocks/PostHeading.astro";
 
 export function getStaticPaths() {
@@ -32,6 +31,10 @@ const breadcrumbs = [
 ];
 
 const post = posts.find((post) => post.url === slug);
+
+if (!post) {
+  throw new Error(`Unknown blog post: ${slug}`);
+}
 ---
 
 <BaseLayout title={post.title} description={post.summary}>
@@ -44,7 +47,7 @@ const post = posts.find((post) => post.url === slug);
     <img
       src="/img/blog/writing-better-css.png"
       alt="snow mountain under stars"
-      lazyload="lazyload"
+      loading="lazy"
     />
     <p class="lead">
       Woodlands payment Osgiliath tightening. Barad-dur follow belly comforts
@@ -65,9 +68,9 @@ const post = posts.find((post) => post.url === slug);
     </p>
     <iframe
       src="https://www.youtube.com/embed/umbiR1sbap8"
-      frameborder="0"
+      style="border: 0"
       allowfullscreen="allowfullscreen"
-      lazyload="lazyload"></iframe>
+      loading="lazy"></iframe>
     <ul>
       <li>Adamant.</li>
       <li>Southfarthing!</li>
@@ -121,7 +124,7 @@ const post = posts.find((post) => post.url === slug);
           <img
             src="/img/blog/4-areas-where-modern-css-solves-a-lot.png"
             alt=""
-            lazyload
+            loading="lazy"
           />
         </a>
       </figure>
@@ -130,13 +133,13 @@ const post = posts.find((post) => post.url === slug);
           <img
             src="/img/blog/8-helpful-sass-mixins-and-functions.png"
             alt=""
-            lazyload
+            loading="lazy"
           />
         </a>
       </figure>
       <figure class="gallery-item gallery-item--3">
         <a href="#">
-          <img src="/img/blog/about-modern-sass.png" alt="" lazyload />
+          <img src="/img/blog/about-modern-sass.png" alt="" loading="lazy" />
         </a>
       </figure>
       <figure class="gallery-item gallery-item--4">
@@ -144,7 +147,7 @@ const post = posts.find((post) => post.url === slug);
           <img
             src="/img/blog/cracking-the-theme-switcher-and-dark-mode.png"
             alt=""
-            lazyload
+            loading="lazy"
           />
         </a>
       </figure>
@@ -153,13 +156,13 @@ const post = posts.find((post) => post.url === slug);
           <img
             src="/img/blog/how-to-choose-a-css-framework.png"
             alt=""
-            lazyload
+            loading="lazy"
           />
         </a>
       </figure>
       <figure class="gallery-item gallery-item--6">
         <a href="#">
-          <img src="/img/blog/introduction-of-spruce-ui.png" alt="" lazyload />
+          <img src="/img/blog/introduction-of-spruce-ui.png" alt="" loading="lazy" />
         </a>
       </figure>
       <figure class="gallery-item gallery-item--7">
@@ -167,13 +170,13 @@ const post = posts.find((post) => post.url === slug);
           <img
             src="/img/blog/the-simplest-sass-compile-setup.png"
             alt=""
-            lazyload
+            loading="lazy"
           />
         </a>
       </figure>
       <figure class="gallery-item gallery-item--8">
         <a href="#">
-          <img src="/img/blog/writing-better-css.png" alt="" lazyload />
+          <img src="/img/blog/writing-better-css.png" alt="" loading="lazy" />
         </a>
       </figure>
     </div>
@@ -320,7 +323,7 @@ const post = posts.find((post) => post.url === slug);
       <img
         src="/img/blog/how-to-choose-a-css-framework.png"
         alt="three brown wooden boat on blue lake water taken at daytime"
-        lazyload="lazyload"
+        loading="lazy"
       />
       <figcaption class="figure-caption">
         Donec at arcu ac diam sodales elementum ac sit amet tortor.

@@ -1,4 +1,5 @@
 @use "sass:color";
+@use "sass:meta";
 
 //light theme
 $color-light-primary: hsl(265, 84%, 34%);
@@ -283,10 +284,10 @@ $vibrent-colors: (
 //generate base styles
 @include generate-styles;
 
-// Import all components at once
-@import "./components";
-@import "./blocks";
-@import "./utils";
+// Load all components at once, keeping CSS output order
+@include meta.load-css("./components");
+@include meta.load-css("./blocks");
+@include meta.load-css("./utils");
 
-// Import addons
-@import "./addons";
+// Load addons
+@include meta.load-css("./addons");

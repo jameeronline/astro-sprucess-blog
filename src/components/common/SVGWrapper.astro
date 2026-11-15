@@ -1,10 +1,14 @@
 ---
 // components/SafeSvg.astro
-const { component } = Astro.props;
-const uniqueId = `svg-${Math.random().toString(36).substr(2, 9)}`;
+interface Props {
+  component: string;
+}
+
+const { component }: Props = Astro.props;
+const uniqueId = `svg-${Math.random().toString(36).slice(2, 11)}`;
 
 // Function to make IDs unique
-const makeUniqueIds = (svg) => {
+const makeUniqueIds = (svg: string) => {
   return svg
     .replace(/\bid="([^"]+)"/g, `id="${uniqueId}-$1"`)
     .replace(/url\(#([^)]+)\)/g, `url(#${uniqueId}-$1)`);

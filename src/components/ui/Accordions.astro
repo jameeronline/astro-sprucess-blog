@@ -1,10 +1,19 @@
 ---
-const { accordionInfo } = Astro.props;
+interface AccordionItem {
+  label: string;
+  description: string;
+}
+
+interface Props {
+  accordionInfo: AccordionItem[];
+}
+
+const { accordionInfo }: Props = Astro.props;
 ---
 
 <div class="accordion-list">
   {
-    accordionInfo.map((item) => {
+    accordionInfo.map((item) => (
       <div class="accordion-card">
         <h3 class="accordion-card__title">{item.label}</h3>
         <div class="accordion-card__content" aria-hidden="true">
@@ -12,7 +21,7 @@ const { accordionInfo } = Astro.props;
             <p>{item.description}</p>
           </div>
         </div>
-      </div>;
-    })
+      </div>
+    ))
   }
 </div>

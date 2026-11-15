@@ -78,7 +78,7 @@
       : "light";
     const preferredTheme = localStorage.getItem("preferred-theme");
 
-    function setTheme(theme) {
+    function setTheme(theme: string) {
       document.documentElement.setAttribute(
         "data-theme-mode",
         theme === "system" ? systemMode : theme,
@@ -103,6 +103,8 @@
 
     const switcher = document.querySelector("#theme-switcher");
     switcher?.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) return;
+
       const btn = event.target.closest("button[data-action]");
       if (!btn) return;
 

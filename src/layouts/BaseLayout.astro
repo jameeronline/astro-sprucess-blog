@@ -6,11 +6,17 @@ import RootLayout from "@layouts/RootLayout.astro";
 import Header from "@components/layouts/Header.astro";
 import Footer from "@components/layouts/Footer.astro";
 import Container from "@components/ui/Container.astro";
-import PageBackground from "@/components/blocks/PageBackground.astro";
+
+//types
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
-<RootLayout>
-  <!-- <PageBackground /> -->
+<RootLayout title={title} description={description}>
   <Header />
   <main id="main-content" class="transition-fade">
     <Container>

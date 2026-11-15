@@ -1,7 +1,6 @@
 ---
 //import layout
 import BaseLayout from "@layouts/BaseLayout.astro";
-import PageHeading from "@components/blocks/PageHeading.astro";
 
 //components
 import ContactCard from "@components/blocks/ContactCard.astro";
@@ -63,36 +62,22 @@ import { MapPin, Mail, Phone } from "@lucide/astro";
 </style>
 
 <script>
-  // Replace with your Google Maps API key
-  const API_KEY = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY;
-
-  const locations = [
-    {
-      title: "Head Office",
-      lat: 37.7749,
-      lng: -122.4194,
-      address: "San Francisco, CA",
-    },
-    {
-      title: "Europe Office",
-      lat: 51.5074,
-      lng: -0.1278,
-      address: "London, UK",
-    },
-    {
-      title: "Asia Office",
-      lat: 1.3521,
-      lng: 103.8198,
-      address: "Singapore",
-    },
-  ];
+  // Google Maps is currently disabled; uncomment these with the map code below.
+  // const API_KEY = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY;
+  // const locations = [
+  //   { title: "Head Office", lat: 37.7749, lng: -122.4194, address: "San Francisco, CA" },
+  //   { title: "Europe Office", lat: 51.5074, lng: -0.1278, address: "London, UK" },
+  //   { title: "Asia Office", lat: 1.3521, lng: 103.8198, address: "Singapore" },
+  // ];
 
   // Form submit handler (simple fetch to /api/contact)
-  const form = document.getElementById("contactForm");
+  const form = document.getElementById("contactForm") as HTMLFormElement | null;
   const status = document.getElementById("formStatus");
 
-  form.addEventListener("submit", async (e) => {
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (!status) return;
+
     const data = Object.fromEntries(new FormData(form));
     try {
       const res = await fetch(form.action, {
@@ -108,7 +93,7 @@ import { MapPin, Mail, Phone } from "@lucide/astro";
         const txt = await res.text();
         alert("Error: " + txt);
       }
-    } catch (err) {
+    } catch {
       alert("Network error");
     }
   });

@@ -1,6 +1,14 @@
 ---
-const { items } = Astro.props;
-console.log(items);
+interface AccordionItem {
+  label: string;
+  description: string;
+}
+
+interface Props {
+  items: AccordionItem[];
+}
+
+const { items }: Props = Astro.props;
 ---
 
 <div class="accordion-list">

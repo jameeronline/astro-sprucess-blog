@@ -1,63 +1,19 @@
 ---
-export const prerender = false;
-
 //astro imports
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from "astro:content";
 
 //import layout
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PageHeading from "@components/blocks/PageHeading.astro";
 
-const url = new URL(Astro.request.url);
-const q = (url.searchParams.get('q') ?? '').trim();
-console.log('Search query:', q);
-
-// Add error handling for getting users collection
-let allUsers = [];
-let collectionError = null;
-
-const allMovies = await getCollection('movies');
-//console.log('All Movies:', allMovies);
-
-try {
-  allUsers = await getCollection('users');
-  //console.log('All Users:', allUsers);
-  //console.log('Number of users found:', allUsers.length);
-  
-  // Log the first user to see the structure
-  if (allUsers.length > 0) {
-    console.log('First user structure:', allUsers[0]);
-  }
-} catch (error) {
-  console.error('Error fetching users collection:', error);
-  collectionError = error.message;
-}
-
-// Filter users based on search query if we have users
-let filteredUsers = [];
-if (q && allUsers.length > 0) {
-  filteredUsers = allUsers.filter(user => {
-    const data = user.data;
-    const searchableText = [
-      data.name,
-      data.email,
-      data.username,
-      data.company?.name,
-      data.address?.city
-    ].filter(Boolean).join(' ').toLowerCase();
-    
-    return searchableText.includes(q.toLowerCase());
-  });
-  
-  console.log('Filtered users:', filteredUsers);
-}
+//fetch users collection at build time
+const allUsers = await getCollection("users");
 ---
 
-<BaseLayout>
+<BaseLayout title="Search" description="Search our users">
   <PageHeading title="Search" />
-  
+
   <div class="container">
-    
     <form action="/search" method="GET" class="search-form">
       <input
         type="text"
@@ -65,71 +21,99 @@ if (q && allUsers.length > 0) {
         placeholder="Search users by name, email, company..."
         class="form-control form-control--lg"
         required
-        value={q}
+        value=""
       />
       <div class="search-form__actions">
-      <button type="submit" class="btn btn--primary btn--lg">Search</button>
-      <a href="/search" class="" role="button" aria-label="Reset search">Reset</a>
+        <button type="submit" class="btn btn--primary btn--lg">Search</button>
+        <a href="/search" class="" role="button" aria-label="Reset search"
+          >Reset</a
+        >
       </div>
     </form>
 
-    <!-- Search Results -->
-    {q && (
-      <div class="search-results">
-        <h2>Search Results ({filteredUsers.length} found)</h2>
-        
-        {filteredUsers.length > 0 ? (
-          <div class="user-grid">
-            {filteredUsers.map(user => (
-              <div class="user-card">
-                <h3>{user.data.name}</h3>
-                <p><strong>Email:</strong> {user.data.email}</p>
-                <p><strong>Username:</strong> {user.data.username}</p>
-                {user.data.company && (
-                  <p><strong>Company:</strong> {user.data.company.name}</p>
+    <!-- Results are filtered client-side so the page can stay static -->
+    <div class="search-results" data-search-results hidden>
+      <h2>
+        Search Results (<span data-result-count>0</span> found)
+      </h2>
+
+      <div class="user-grid">
+        {
+          allUsers.map((user) => {
+            const data = user.data;
+            const searchableText = [
+              data.name,
+              data.email,
+              data.username,
+              data.company?.name,
+              data.address?.city,
+            ]
+              .filter(Boolean)
+              .join(" ")
+              .toLowerCase();
+
+            return (
+              <div class="user-card" data-search={searchableText}>
+                <h3>{data.name}</h3>
+                <p>
+                  <strong>Email:</strong> {data.email}
+                </p>
+                <p>
+                  <strong>Username:</strong> {data.username}
+                </p>
+                {data.company && (
+                  <p>
+                    <strong>Company:</strong> {data.company.name}
+                  </p>
                 )}
-                {user.data.address && (
-                  <p><strong>City:</strong> {user.data.address.city}</p>
+                {data.address && (
+                  <p>
+                    <strong>City:</strong> {data.address.city}
+                  </p>
                 )}
               </div>
-            ))}
-          </div>
-        ) : (
-          <p>No users found matching "{q}"</p>
-        )}
+            );
+          })
+        }
       </div>
-    )}
+    </div>
 
-    <!-- Show all users if no search query -->
-    <!-- {!q && allUsers.length > 0 && (
-      <div class="all-users">
-        <h2>All Users ({allUsers.length})</h2>
-        <div class="user-grid">
-          {allUsers.map(user => (
-            <div class="user-card">
-              <h3>{user.data.name}</h3>
-              <p><strong>Email:</strong> {user.data.email}</p>
-              <p><strong>Username:</strong> {user.data.username}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    )} -->
-
-    {collectionError && (
-      <div class="error-message" style="color: red; padding: 1rem; background: #ffebee; border-radius: 8px;">
-        <h3>Collection Error:</h3>
-        <p>{collectionError}</p>
-        <p>Please check:</p>
-        <ul>
-          <li>Does <code>src/content/users/</code> directory exist?</li>
-          <li>Is the collection defined in <code>src/content/config.ts</code>?</li>
-          <li>Are there any files in the users collection?</li>
-        </ul>
-      </div>
-    )}
+    <p data-no-results hidden>
+      No users found matching "<span data-query></span>"
+    </p>
   </div>
 </BaseLayout>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const query = (params.get("q") ?? "").trim();
+  const input = document.querySelector<HTMLInputElement>('input[name="q"]');
+  const results = document.querySelector<HTMLElement>("[data-search-results]");
+  const cards = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-search]"),
+  );
+  const count = document.querySelector<HTMLElement>("[data-result-count]");
+  const noResults = document.querySelector<HTMLElement>("[data-no-results]");
+  const queryLabel = document.querySelector<HTMLElement>("[data-query]");
+
+  if (input) input.value = query;
+
+  if (query) {
+    const needle = query.toLowerCase();
+    let matches = 0;
+
+    cards.forEach((card) => {
+      const match = card.dataset.search?.includes(needle) ?? false;
+      card.hidden = !match;
+      if (match) matches += 1;
+    });
+
+    if (results) results.hidden = false;
+    if (count) count.textContent = String(matches);
+    if (noResults) noResults.hidden = matches !== 0;
+    if (queryLabel) queryLabel.textContent = query;
+  }
+</script>
 
 <style>
   .user-grid {
@@ -138,19 +122,19 @@ if (q && allUsers.length > 0) {
     gap: 1rem;
     margin: 2rem 0;
   }
-  
+
   .user-card {
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     background: white;
   }
-  
+
   .user-card h3 {
     margin-top: 0;
     color: #333;
   }
-  
+
   .debug-info {
     font-family: monospace;
     font-size: 0.9rem;

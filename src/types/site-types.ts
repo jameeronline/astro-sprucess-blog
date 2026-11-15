@@ -4,6 +4,8 @@ export interface NavigationItem {
   link: string;
 }
 
+export type SiteNavigationLink = NavigationItem;
+
 //site metadata types
 export interface SiteMetadata {
   title: string;

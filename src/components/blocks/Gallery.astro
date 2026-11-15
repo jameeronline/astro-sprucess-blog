@@ -1,10 +1,17 @@
 ---
-const { images = [], isEven = false } = Astro.props;
-
-// Validate images prop
-if (!Array.isArray(images)) {
-  console.error('Gallery: images prop must be an array');
+interface GalleryImage {
+  image: string;
+  alt?: string;
+  title?: string;
+  url?: string;
 }
+
+interface Props {
+  images?: GalleryImage[];
+  isEven?: boolean;
+}
+
+const { images = [], isEven = false }: Props = Astro.props;
 ---
 
 <div 

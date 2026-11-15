@@ -1,7 +1,14 @@
 <script>
   (() => {
     document.querySelectorAll(".accordion-card").forEach((accordion) => {
-      const heading = accordion.querySelector(".accordion-card__title");
+      const heading = accordion.querySelector<HTMLElement>(
+        ".accordion-card__title"
+      );
+      const content = accordion.querySelector<HTMLElement>(
+        ".accordion-card__content"
+      );
+      if (!heading || !content) return;
+
       const button = document.createElement("button");
       const icon = document.createElement("span");
 
@@ -24,12 +31,13 @@
         document
           .querySelectorAll(".accordion-card")
           .forEach((otherAccordion) => {
-            const otherButton = otherAccordion.querySelector("button");
-            const otherContent = otherAccordion.querySelector(
+            const otherButton =
+              otherAccordion.querySelector<HTMLElement>("button");
+            const otherContent = otherAccordion.querySelector<HTMLElement>(
               ".accordion-card__content"
             );
 
-            if (otherButton !== button) {
+            if (otherButton && otherContent && otherButton !== button) {
               otherButton.setAttribute("aria-expanded", "false");
               otherContent.setAttribute("aria-hidden", "true");
             }
@@ -37,8 +45,8 @@
 
         const expanded = button.getAttribute("aria-expanded") === "true";
 
-        button.setAttribute("aria-expanded", !expanded);
-        heading.nextElementSibling.setAttribute("aria-hidden", expanded);
+        button.setAttribute("aria-expanded", String(!expanded));
+        content.setAttribute("aria-hidden", String(expanded));
       });
     });
   })();
